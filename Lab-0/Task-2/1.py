@@ -17,4 +17,4 @@ if n < 0 or n > 45:
 with open(r'C:\Users\Admin\Desktop\PersonalPapka\ITMOlabs\Algorithms\Lab-0\Task-2\output.txt', 'w+') as file:
     file.write(str(fib(n)))
 
-print(f'TIME {time.perf_counter() - time_start} sec')
+print(f'TIME {time.perf_counter() - time_start} sec.')
