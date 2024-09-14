@@ -8,7 +8,7 @@ def fib(n):
 import time
 time_start = time.perf_counter()
 
-with open('input.txt', 'r+') as file:
+with open('input.txt') as file:
     n = int(file.readline())
 
 if n < 0 or n > 10 ** 7:

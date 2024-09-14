@@ -1,4 +1,4 @@
-with open('input.txt', 'r+') as file:
+with open('input.txt') as file:
     a, b = map(int, file.readline().split())
 
 if a < -(10 ** 9) or a > 10 ** 9 or b < -(10 ** 9) or b > 10 ** 9:
