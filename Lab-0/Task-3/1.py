@@ -1,7 +1,4 @@
 def fib(n):
-    if n < 0:
-        raise Exception('The number must be positive')
-
     last1, last2 = 0, 1
     for _ in range(n):
         last1, last2 = last2, (last1 + last2) % 10
