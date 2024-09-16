@@ -1,6 +1,8 @@
-a, b = map(int, input().split())
+while True:
+    a, b = map(int, input().split())
 
-if a < -(10 ** 9) or a > 10 ** 9 or b < -(10 ** 9) or b > 10 ** 9:
-    raise Exception('The number out of range')
-
-print(a + b)
+    if -(10 ** 9) <= a <= (10 ** 9) and -(10 ** 9) <= b <= (10 ** 9):
+        print(a + b)
+        break
+    else:
+        print('Incorrect numbers. Try again.')
