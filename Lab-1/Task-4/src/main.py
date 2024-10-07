@@ -6,7 +6,7 @@ def main():
         value = int(file.readline())
 
     with open('../txtf/output.txt', 'w') as file: 
-        print(find(lst, value), file=file)
+        print(*find(lst, value), file=file)
 
 
 if __name__ == "__main__":

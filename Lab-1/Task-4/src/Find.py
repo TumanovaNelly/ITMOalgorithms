@@ -1,6 +1,9 @@
-def find(lst: list, value) -> int:
+def find(lst: list, value) -> list:
+    indexes = []
     for i in range(len(lst)):
         if lst[i] == value:
-            return i + 1
-
-    return -1
+            indexes.append(i + 1)
+    
+    if not indexes:
+        indexes.append(-1)
+    return indexes
