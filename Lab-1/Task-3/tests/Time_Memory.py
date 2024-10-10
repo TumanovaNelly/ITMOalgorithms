@@ -1,6 +1,6 @@
 import sys
 sys.path.append('../src')
-from Main import main
+from main import main
 
 import tracemalloc
 import time
