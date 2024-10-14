@@ -19,11 +19,11 @@ git clone https://github.com/TumanovaNelly/ITMOalgorithms
 ```bash
 cd ITMOalgorithms/
 ```
-3. Запустите нужную программу из файла (вставьте номер нужной задачи вместо _):
+3. Запустите нужную программу из файла (вставьте номер нужной задачи вместо *):
 ```bash
-python3 Lab1/Task_/src/main.py
+python3 Lab1/Task*/src/main.py
 ```
-4. Чтобы проверить время выполнения программы _ и занятую память:
+4. Чтобы проверить время выполнения программы * и занятую память:
 ```bash
-python3 Lab1/Task_/tests/Time_Memory.py
+python3 Lab1/Task*/tests/Time_Memory.py
 ```
