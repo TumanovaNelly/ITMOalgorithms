@@ -17,9 +17,13 @@ git clone https://github.com/TumanovaNelly/ITMOalgorithms
 ```
 2. Перейдите в папку с проектом:
 ```bash
-cd ITMOalgorithms/Lab1
+cd ITMOalgorithms/
 ```
-3. Запустите программу:
+3. Запустите нужную программу из файла (вставьте номер нужной задачи вместо _):
 ```bash
-python3 src/main.py
+python3 Lab1/Task_/src/main.py
+```
+4. Чтобы проверить время выполнения программы _ и занятую память:
+```bash
+python3 Lab1/Task_/tests/Time_Memory.py
 ```
