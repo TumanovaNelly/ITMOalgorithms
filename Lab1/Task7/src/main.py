@@ -1,5 +1,4 @@
-from BubbleSort import bubble_sort_indexes
-from decimal import Decimal
+from Lab1.Task7.src.BubbleSort import bubble_sort_indexes
 
 def main():
     with open('../txtf/input.txt') as file:

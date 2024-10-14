@@ -1,6 +1,4 @@
-import sys
-sys.path.append('../src')
-from SelectionSort import selection_sort
+from Lab1.Task5.src.SelectionSort import selection_sort
 import pytest
 
 def test_already_sorted():

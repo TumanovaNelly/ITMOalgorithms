@@ -1,4 +1,4 @@
-from BubbleSort import bubble_sort
+from Lab1.Task6.src.BubbleSort import bubble_sort
 
 def main():
     with open('../txtf/input.txt') as file:

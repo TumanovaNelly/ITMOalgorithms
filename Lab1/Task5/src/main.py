@@ -1,4 +1,4 @@
-from SelectionSort import selection_sort
+from Lab1.Task5.src.SelectionSort import selection_sort
 
 def main():
     with open('../txtf/input.txt') as file:

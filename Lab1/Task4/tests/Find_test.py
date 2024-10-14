@@ -1,6 +1,4 @@
-import sys
-sys.path.append('../src')
-from Find import find
+from Lab1.Task4.src.Find import find
 import pytest
 
 def test_find_found():

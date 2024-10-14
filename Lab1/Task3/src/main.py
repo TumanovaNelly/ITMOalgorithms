@@ -1,4 +1,4 @@
-from InsertionSort import insertion_sort_reversed
+from Lab1.Task3.src.InsertionSort import insertion_sort_reversed
 
 def main():
     with open('../txtf/input.txt') as file:

@@ -1,4 +1,4 @@
-from BinAdd import bin_add
+from Lab1.Task9.src.BinAdd import bin_add
 
 def main():
     with open('../txtf/input.txt') as file:

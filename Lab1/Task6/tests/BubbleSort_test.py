@@ -1,6 +1,4 @@
-import sys
-sys.path.append('../src')
-from BubbleSort import bubble_sort
+from Lab1.Task6.src.BubbleSort import bubble_sort
 import pytest
 
 def test_already_sorted():

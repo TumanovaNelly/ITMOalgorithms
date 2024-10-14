@@ -1,4 +1,4 @@
-from MakePalindrome import make_palindrome
+from Lab1.Task10.src.MakePalindrome import make_palindrome
 
 def main():
     with open('../txtf/input.txt') as file:

@@ -1,6 +1,4 @@
-import sys
-sys.path.append('../src')
-from main import main
+from Lab1.Task8.src.main import main
 
 import tracemalloc
 import time

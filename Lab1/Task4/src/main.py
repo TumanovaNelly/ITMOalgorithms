@@ -1,4 +1,4 @@
-from Find import find
+from Lab1.Task4.src.Find import find
 
 def main():
     with open('../txtf/input.txt') as file:

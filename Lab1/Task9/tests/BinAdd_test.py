@@ -1,6 +1,4 @@
-import sys
-sys.path.append('../src')
-from BinAdd import bin_add
+from Lab1.Task9.src.BinAdd import bin_add
 import pytest
 
 def test_bin_add_same_length():

@@ -1,11 +1,9 @@
-import sys
-sys.path.append('../../Task-6/src')
-from BubbleSort import bubble_sort
+from Lab1.Task1.src.InsertionSort import insertion_sort_bin_pow
 from string import ascii_uppercase
 
 def make_palindrome_general(letters_str: str) -> str:
     letters = list(letters_str)
-    bubble_sort(letters)
+    insertion_sort_bin_pow(letters)
   
     cur = 0
     center = str()
@@ -22,6 +20,7 @@ def make_palindrome_general(letters_str: str) -> str:
         center = letters[cur]
 
     return "".join(palindrome_half + [center] + list(reversed(palindrome_half)))
+
 
 def make_palindrome(letters: str) -> str:
     letters_cnt = [0] * len(ascii_uppercase)

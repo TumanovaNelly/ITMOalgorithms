@@ -1,4 +1,4 @@
-from InsertionSort import insertion_sort_bin_pow
+from Lab1.Task1.src.InsertionSort import insertion_sort_bin_pow
 
 def main():
     with open('../txtf/input.txt') as file:
