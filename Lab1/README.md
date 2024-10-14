@@ -17,9 +17,9 @@ git clone https://github.com/TumanovaNelly/ITMOalgorithms
 ```
 2. Перейдите в папку с проектом:
 ```bash
-cd ITMOalgorithms/Lab-1
+cd ITMOalgorithms/Lab1
 ```
 3. Запустите программу:
 ```bash
-python3 src/Main.py
+python3 src/main.py
 ```
