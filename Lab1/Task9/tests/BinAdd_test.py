@@ -24,5 +24,6 @@ def test_bin_add_invalid_input_non_binary():
     with pytest.raises(ValueError):
         bin_add([1, 0, 1], [1, 0, 5])
 
+
 if __name__ == "__main__":
     pytest.main()

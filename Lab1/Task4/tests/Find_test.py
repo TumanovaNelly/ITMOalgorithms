@@ -31,5 +31,6 @@ def test_find_multiple_occurrences():
     value = 2
     assert find(lst, value) == [2, 4]
 
+
 if __name__ == "__main__":
     pytest.main()

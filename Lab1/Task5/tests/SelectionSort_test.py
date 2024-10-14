@@ -1,4 +1,5 @@
 from Lab1.Task5.src.SelectionSort import selection_sort
+from random import randint
 import pytest
 
 def test_already_sorted():
@@ -30,6 +31,15 @@ def test_single_element():
     lst = [42]
     selection_sort(lst)
     assert lst == [42]
+
+def test_random():
+    for _ in range(100):
+        lst = [randint(-100, 100) for _ in range(randint(0, 100))]
+        lst1 = lst[:]
+        lst.sort()
+        selection_sort(lst1)
+        assert lst1 == lst
+
 
 if __name__ == "__main__":
     pytest.main()

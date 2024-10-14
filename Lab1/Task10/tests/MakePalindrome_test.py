@@ -25,5 +25,6 @@ def test_make_palindrome_invalid_symbol():
     with pytest.raises(ValueError):
         make_palindrome("A1B")
 
+
 if __name__ == "__main__":
     pytest.main()
