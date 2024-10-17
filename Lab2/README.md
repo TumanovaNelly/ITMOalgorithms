@@ -1,0 +1,1 @@
+(1..1000 | ForEach-Object { Get-Random }) -join ' ' | Out-File -FilePath "input.txt" -Encoding ascii
