@@ -4,7 +4,7 @@ def majority_element_recursion(lst: list, start: int = 0, end: int = -1) -> tupl
 
     num_elements = end - start
     if num_elements == 0:
-        return None, None
+        return None, -1
     if num_elements == 1:
         return lst[start], 1
 
@@ -12,21 +12,21 @@ def majority_element_recursion(lst: list, start: int = 0, end: int = -1) -> tupl
     majority_left, num_left = majority_element_recursion(lst, start, mid)
     majority_right, num_right = majority_element_recursion(lst, mid, end)
 
-    if majority_left:
+    if num_left != -1:
         for i in range(mid, end):
             if lst[i] == majority_left:
                 num_left += 1
         if num_left > num_elements // 2:
             return majority_left, num_left
 
-    if majority_right:
+    if num_right != -1:
         for i in range(start, mid):
             if lst[i] == majority_right:
                 num_right += 1
         if num_right > num_elements // 2:
             return majority_right, num_right
 
-    return None, None
+    return None, -1
 
 
 def majority_element_line(lst:list) -> tuple:

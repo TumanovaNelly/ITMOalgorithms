@@ -13,9 +13,8 @@ def merge(list1: list, list2: list, target: list, start_index: int = 0) -> None:
     while cur1 < len(list1) and cur2 < len(list2):
         """
         На каждой итерации сравниваются текущие элементы list1[cur1] и list2[cur2]. 
-        Меньший из них добавляется в target
-        Следующий элемент списка с меньшим элементом становится текущим 
-        (Текущий элемент другого списка остается текущим)
+        Меньший из них из списка list_i добавляется в target
+        Следующий элемент списка list_i становится текущим 
         """
         if list1[cur1] <= list2[cur2]:
             target[cur_target] = list1[cur1]

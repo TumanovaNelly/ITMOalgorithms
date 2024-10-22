@@ -1,4 +1,9 @@
 def mult_polynomials(f: list, g: list) -> list:
+    """
+    полиномы представляются в форме: a0 + a1 * x + a2 * x^2 + ...
+    :param f, g: [a0, a1, a2, ...]
+    :return: полином степени deg(f) + deg(g) в аналогичной форме
+    """
     if not f or not g:
         raise ValueError("Empty polynomials")
 
@@ -35,6 +40,21 @@ def mult_polynomials(f: list, g: list) -> list:
 
     for i in range(len(sum_f_sum_g)):
         result[mid + i] += sum_f_sum_g[i]
+
+    return result
+
+
+#_______________________________________________
+def mult_polynomials_naive(f: list, g: list):
+    if not f or not g:
+        raise ValueError("Empty polynomials")
+
+    result = [0] * (max(len(f), len(g)) * 2 - 1)
+
+    for k in range(len(result)):
+        for i in range(k + 1):
+            if i < len(f) and k - i < len(g):
+                result[k] += f[i] * g[k - i]
 
     return result
 
