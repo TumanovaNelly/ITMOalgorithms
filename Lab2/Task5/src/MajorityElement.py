@@ -3,17 +3,16 @@ import typing as tp
 
 def majority_element_recursion(lst: tp.List[int], start: int = 0, end: int = -1) -> tp.Tuple[tp.Optional[int], int]:
     """
-    Поиск мажорирующего элемента на части lst от start до end (включительно)
+    Поиск мажорирующего элемента на части lst от start до end (не включительно)
     :param lst: список
     :param start: начальный индекс списка
-    :param end: конечный индекс (можно использовать отрицательные значения)
+    :param end: конечный индекс (end = len(lst) <-> end == -1)
     :return: значение мажорирующего элемента (None, если его нет) и
     количество раз, которое он встречается в списке (-1, если его нет)
     """
 
-    if end < 0:
-        end += len(lst)
-    end += 1
+    if end == -1:
+        end = len(lst)
 
     num_elements = end - start
     if num_elements == 0:
