@@ -1,5 +1,7 @@
 from random import shuffle
+
 from Lab2.Task3.src.CountInversions import merge_sort_count_inversions, count_inversions_naive
+
 
 def test_merge_sort_count_inversions():
     for _ in range(100):

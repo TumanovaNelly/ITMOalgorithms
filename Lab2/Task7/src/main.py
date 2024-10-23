@@ -9,5 +9,6 @@ def main():
         sm, start, end = find_max_subarray(lst)
         print(f"start: {start} \nend: {end} \nsum: {sm}", file=file)
 
+
 if __name__ == "__main__":
     main()

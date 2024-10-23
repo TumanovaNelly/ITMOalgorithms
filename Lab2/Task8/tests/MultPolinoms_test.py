@@ -1,5 +1,7 @@
 from random import randint
+
 from Lab2.Task8.src.MultPolynomials import mult_polynomials, mult_polynomials_naive
+
 
 def test_mult_polynomials_random():
     for _ in range(100):

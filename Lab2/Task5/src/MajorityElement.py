@@ -1,6 +1,19 @@
-def majority_element_recursion(lst: list, start: int = 0, end: int = -1) -> tuple:
-    if end == -1:
-        end = len(lst)
+import typing as tp
+
+
+def majority_element_recursion(lst: tp.List[int], start: int = 0, end: int = -1) -> tp.Tuple[tp.Optional[int], int]:
+    """
+    Поиск мажорирующего элемента на части lst от start до end (включительно)
+    :param lst: список
+    :param start: начальный индекс списка
+    :param end: конечный индекс (можно использовать отрицательные значения)
+    :return: значение мажорирующего элемента (None, если его нет) и
+    количество раз, которое он встречается в списке (-1, если его нет)
+    """
+
+    if end < 0:
+        end += len(lst)
+    end += 1
 
     num_elements = end - start
     if num_elements == 0:
@@ -29,7 +42,14 @@ def majority_element_recursion(lst: list, start: int = 0, end: int = -1) -> tupl
     return None, -1
 
 
-def majority_element_line(lst:list) -> tuple:
+def majority_element_line(lst: tp.List[int]) -> tp.Tuple[tp.Optional[int], int]:
+    """
+    Поиск мажорирующего элемента в lst за линию
+    :param lst: список
+    :return: значение мажорирующего элемента (None, если его нет) и
+    количество раз, которое он встречается в списке (-1, если его нет)
+    """
+
     num_without_pair = 0 # количество элементов которые пока без пары
     candidate = None # Значение элементов без пары
     """
@@ -55,7 +75,7 @@ def majority_element_line(lst:list) -> tuple:
         if elem == candidate:
             cnt += 1
 
-    return (candidate, cnt) if cnt > len(lst) // 2 else (None, None)
+    return (candidate, cnt) if cnt > len(lst) // 2 else (None, -1)
 
 
 

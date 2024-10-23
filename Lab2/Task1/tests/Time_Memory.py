@@ -1,7 +1,8 @@
-from Lab2.Task1.src.main import main
-
 import tracemalloc
 import time
+
+from Lab2.Task1.src.main import main
+
 
 tracemalloc.start()
 time_start = time.perf_counter()

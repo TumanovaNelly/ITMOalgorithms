@@ -1,6 +1,7 @@
+from random import randint
+
 from Lab2.Task5.src.MajorityElement import majority_element_recursion, majority_element_line
 
-from random import randint
 
 def test_majority_elem():
     lst = [2, 3, 9, 2, 2]

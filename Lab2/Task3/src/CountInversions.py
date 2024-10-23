@@ -1,4 +1,16 @@
-def merge_count_inversions(list1: list, list2: list, target: list, start_index: int = 0) -> int:
+import typing as tp
+
+
+def merge_count_inversions(list1: tp.List[int], list2: tp.List[int], target: tp.List[int], start_index: int = 0) -> int:
+    """
+    Слияние list1 и list2, подсчет суммы по i от 0 до длины list1: количество элементов из list2, меньших list1[i]
+    :param list1: отсортированный список 1
+    :param list2: отсортированный список 2
+    :param target: список, в который будет помещён результат слияния списка 1 и списка 2
+    :param start_index: индекс в списке target, откуда начнётся запись элементов
+    :return: сумма по i от 0 до длины list1: количество элементов из list2, меньших list1[i]
+    """
+
     cnt = 0
     """
     Для каждого элемента из левого списка считаем количество меньших элементов из правого списка
@@ -41,8 +53,9 @@ def merge_count_inversions(list1: list, list2: list, target: list, start_index: 
 
 def merge_sort_count_inversions(lst: list) -> int:
     """
-    :param lst: список, который нужно отсортировать
-    :return: None: сортировка на месте
+    Нахождение количества инверсий
+    :param lst: список, в котором нужно найти количество инверсий (отсортируется в процессе)
+    :return: количество инверсий в lst
     """
     count_inv = 0 # счетчик инверсий
     len_merging_lists = 1 # длина сливающихся подсписков
@@ -73,8 +86,14 @@ def merge_sort_count_inversions(lst: list) -> int:
 
     return count_inv
 
+
 #______________________________________________
-def count_inversions_naive(lst: list):
+def count_inversions_naive(lst: tp.List[int]) -> int:
+    """
+    Нахождение количества инверсий перебором
+    :param lst: список
+    :return: количество инверсий
+    """
     cnt = 0
     for i in range(len(lst) - 1):
         for j in range(i + 1, len(lst)):

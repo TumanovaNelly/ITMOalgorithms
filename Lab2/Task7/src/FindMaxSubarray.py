@@ -1,4 +1,13 @@
-def find_max_subarray(lst: list) -> tuple:
+import typing as tp
+
+
+def find_max_subarray(lst: tp.List[int]) -> tp.Tuple[int, int, int]:
+    """
+    Поиск максимального подмассива
+    :param lst: список
+    :return: сумма элементов максимального подмассива, стартовый индекс, конечный индекс
+    """
+
     max_subarray = lst[0] # сумма элементов максимального подмассива
     left, right = 0, 1 # границы максимального подмассива
 
@@ -27,8 +36,14 @@ def find_max_subarray(lst: list) -> tuple:
 
 
 #______________________________________________
-def find_max_subarray_naive(lst: list) -> tuple:
-    mx = lst[0]
+def find_max_subarray_naive(lst: tp.List[int]) -> tp.Tuple[int, int, int]:
+    """
+    Поиск максимального подмассива перебором всех подмассивов
+    :param lst: список
+    :return: сумма элементов максимального подмассива, стартовый индекс, конечный индекс
+    """
+
+    max_subarray = lst[0]
     left = 0
     right = 1
     for l in range(len(lst)):
@@ -36,9 +51,9 @@ def find_max_subarray_naive(lst: list) -> tuple:
             sm = 0
             for i in range(l, r):
                 sm += lst[i]
-            if mx < sm:
-                mx = sm
+            if max_subarray < sm:
+                max_subarray = sm
                 left, right = l, r
 
-    return mx, left, right
+    return max_subarray, left, right
 

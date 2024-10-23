@@ -1,7 +1,16 @@
-def bin_pow(lst: list, value: int):
+import typing as tp
+
+
+def bin_pow(lst: tp.List[int], value: int) -> int:
+    """
+    Поиск value в списке lst
+    :param lst: список, в котором будет производиться поиск
+    :param value: искомый элемент
+    :return: индекс искомого элемента или -1, если его нет
+    """
+
     lst_indexes = list(range(len(lst)))
-    lst_indexes.sort(key=lambda index: lst[index])
-    # индексы элементов отсортированного списка lst
+    lst_indexes.sort(key=lambda index: lst[index]) # индексы элементов отсортированного списка lst
 
     left = 0
     right = len(lst) - 1

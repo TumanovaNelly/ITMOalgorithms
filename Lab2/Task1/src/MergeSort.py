@@ -1,8 +1,13 @@
-def merge(list1: list, list2: list, target: list, start_index: int = 0) -> None:
+import typing as tp
+
+
+def merge(list1: tp.List[int], list2: tp.List[int], target: tp.List[int], start_index: int = 0) -> None:
     """
-    :param list1, list2: отсортированные списки, которые необходимо слить
-    :param target: список, в который будет помещён результат слияния
-    :param start_index: указывает начальный индекс в списке target, куда начнётся запись элементов
+    Слияние list1 и list2 в target, начиная с индекса target = start
+    :param list1: отсортированный список 1
+    :param list2: отсортированный список 2
+    :param target: список, в который будет помещён результат слияния списка 1 и списка 2
+    :param start_index: индекс в списке target, откуда начнётся запись элементов
     """
     cur1 = cur2 = 0   # текущие индексы в list1 и list2 соотв.
     cur_target = start_index # текущий индекс в target
@@ -37,11 +42,12 @@ def merge(list1: list, list2: list, target: list, start_index: int = 0) -> None:
             cur_target += 1
 
 
-def merge_sort(lst: list) -> None:
+def merge_sort(lst: tp.List[int]) -> None:
     """
+    Сортировка списка слиянием на месте
     :param lst: список, который нужно отсортировать
-    :return: None: сортировка на месте
     """
+
     """
     Разделим список на подсписки длиной 1, будем попарно их сливать
     Список преобр. в список отсортированных подсписков длиной 2 (мб кроме последнего), 

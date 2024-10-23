@@ -1,5 +1,7 @@
 from random import randint
+
 from Lab2.Task4.src.BinPow import bin_pow
+
 
 def test_bin_pow():
     for _ in range(1000):
