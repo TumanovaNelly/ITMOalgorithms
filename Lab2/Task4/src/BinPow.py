@@ -14,14 +14,13 @@ def bin_pow(lst: tp.List[int], value: int) -> int:
 
     left = 0
     right = len(lst) - 1
-    while left < right:
+    while left <= right:
         mid = left + (right - left) // 2
+        if lst[lst_indexes[mid]] == value:
+            return lst_indexes[mid]
         if lst[lst_indexes[mid]] < value:
             left = mid + 1
         else:
-            right = mid
-
-    if lst[lst_indexes[right]] == value:
-        return lst_indexes[right]
+            right = mid - 1
 
     return -1
