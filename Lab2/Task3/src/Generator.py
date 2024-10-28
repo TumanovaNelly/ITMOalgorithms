@@ -1,13 +1,12 @@
 from random import shuffle
+from Utils.Read_n_Write import write
 
 
 def generate(number: int):
     assert number > 0
-
-    with open(r'../txtf/input.txt', 'w') as file:
-        lst = list(map(str, range(number)))
-        shuffle(lst)
-        file.write(" ".join(lst))
+    lst = list(map(str, range(number)))
+    shuffle(lst)
+    write(*lst, filename=r'../txtf/input.txt')
 
 
 if __name__ == "__main__":

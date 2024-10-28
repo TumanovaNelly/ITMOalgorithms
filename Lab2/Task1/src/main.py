@@ -1,14 +1,11 @@
 from Lab2.Task1.src.MergeSort import merge_sort
+from Utils.Read_n_Write import read, write
 
 
 def main():
-    with open(r'..\txtf\input.txt') as file:
-        lst = list(map(int, file.readline().split()))
-
+    lst, = read()
     merge_sort(lst)
-
-    with open(r'..\txtf\output.txt', 'w') as file:
-        print(*lst, sep=" ", file=file)
+    write(*lst)
 
 
 if __name__ == "__main__":
