@@ -1,13 +1,11 @@
 from Lab1.Task1.src.InsertionSort import insertion_sort_bin_pow
+from Utils.Read_n_Write import read, write
+
 
 def main():
-    with open('../txtf/input.txt') as file:
-        lst = list(map(int, file.readline().split()))
-
+    lst, = read()
     insertion_sort_bin_pow(lst)
-
-    with open('../txtf/output.txt', 'w') as file: 
-        print(*lst, file=file)
+    write(*lst)
 
 if __name__ == "__main__":
     main()

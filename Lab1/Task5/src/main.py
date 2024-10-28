@@ -1,13 +1,11 @@
 from Lab1.Task5.src.SelectionSort import selection_sort
+from Utils.Read_n_Write import read, write
+
 
 def main():
-    with open('../txtf/input.txt') as file:
-        lst = list(map(int, file.readline().split()))
-
+    lst, = read()
     selection_sort(lst)
-
-    with open('../txtf/output.txt', 'w') as file: 
-        print(*lst, file=file)
+    write(*lst)
 
 if __name__ == "__main__":
     main()

@@ -1,13 +1,13 @@
 from Lab1.Task9.src.BinAdd import bin_add
+from Utils.Read_n_Write import read, write
+
 
 def main():
-    with open('../txtf/input.txt') as file:
-        first, second = map(list, file.readline().split())
-        first = list(map(int, first))
-        second = list(map(int, second))
+    (first, second), = read(type_convert=str)
+    first = list(map(int, list(first)))
+    second = list(map(int, list(second)))
+    write(*bin_add(first, second), sep="")
 
-    with open('../txtf/output.txt', 'w') as file: 
-        print(*bin_add(first, second), sep="", file=file)
 
 if __name__ == "__main__":
     main()

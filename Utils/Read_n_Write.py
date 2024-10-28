@@ -1,7 +1,7 @@
-def read(filename: str = r'..\txtf\input.txt'):
+def read(filename: str = r'..\txtf\input.txt', type_convert = int):
     with open(filename) as file:
         while True:
-            line = list(map(int, file.readline().split()))
+            line = list(map(type_convert, file.readline().split()))
             if line:
                 yield line
             else: break

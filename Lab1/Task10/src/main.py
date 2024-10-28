@@ -1,11 +1,11 @@
 from Lab1.Task10.src.MakePalindrome import make_palindrome
+from Utils.Read_n_Write import read, write
+
 
 def main():
-    with open('../txtf/input.txt') as file:
-        letters = file.readline()
+    letters, = read(type_convert=str)
+    write(make_palindrome(*letters))
 
-    with open('../txtf/output.txt', 'w') as file: 
-        print(make_palindrome(letters), file=file)
 
 if __name__ == "__main__":
     main()
