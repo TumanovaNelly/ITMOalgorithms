@@ -1,4 +1,5 @@
 import typing as tp
+from Utils.Read_n_Write import *
 
 
 def mult_polynomials(f: tp.List[int], g: tp.List[int]) -> tp.List[int]:
@@ -89,4 +90,12 @@ def mult_polynomials_naive(f: tp.List[int], g: tp.List[int]) -> tp.List[int]:
 
     return result
 
+
+def main():
+    f, g = read()
+    write(*mult_polynomials(f, g))
+
+
+if __name__ == "__main__":
+    main()
 

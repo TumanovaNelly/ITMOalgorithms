@@ -1,4 +1,5 @@
 import typing as tp
+from Utils.Read_n_Write import *
 
 
 def merge(list1: tp.List[int], list2: tp.List[int], target: tp.List[int], start_index: int = 0) -> None:
@@ -75,6 +76,14 @@ def merge_sort(lst: tp.List[int]) -> None:
         len_merging_lists *= 2
 
 
+def main():
+    lst, = read()
+    merge_sort(lst)
+    write(*lst)
+
+
+if __name__ == "__main__":
+    main()
 
 
 

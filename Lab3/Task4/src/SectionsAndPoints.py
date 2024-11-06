@@ -1,6 +1,7 @@
 from collections.abc import Iterator
 from typing import List, Tuple
 from Lab3.Task1.src.QuickSort import quick_sort
+from Utils.Read_n_Write import *
 
 
 # флаги
@@ -41,3 +42,11 @@ def sections_n_points_naive(sections: List[Tuple[int, int]], points: List[int]) 
                 cnt += 1
 
         yield cnt
+
+
+def main():
+    *sections, points = read()
+    write(*sections_n_points(sections, points))
+
+if __name__ == "__main__":
+    main()

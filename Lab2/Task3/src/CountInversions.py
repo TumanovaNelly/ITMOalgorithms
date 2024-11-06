@@ -1,4 +1,5 @@
 import typing as tp
+from Utils.Read_n_Write import *
 
 
 def merge_count_inversions(list1: tp.List[int], list2: tp.List[int], target: tp.List[int], start_index: int = 0) -> int:
@@ -101,6 +102,15 @@ def count_inversions_naive(lst: tp.List[int]) -> int:
                 cnt += 1
 
     return cnt
+
+
+def main():
+    lst, = read()
+    write(merge_sort_count_inversions(lst))
+
+
+if __name__ == "__main__":
+    main()
 
 
 

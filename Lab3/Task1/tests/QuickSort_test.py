@@ -1,7 +1,5 @@
-from random import randint
-from Lab3.Task1.src.QuickSort import partition, quick_sort
+from Lab3.Task1.src.QuickSort import *
 from Utils.Time_Memory import time_data
-from Lab3.Task1.src.main import main
 
 
 def test_partition():

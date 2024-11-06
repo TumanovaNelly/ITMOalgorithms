@@ -1,4 +1,5 @@
 import typing as tp
+from Utils.Read_n_Write import *
 
 
 def bin_pow(lst: tp.List[int], value: int) -> int:
@@ -24,3 +25,13 @@ def bin_pow(lst: tp.List[int], value: int) -> int:
             right = mid - 1
 
     return -1
+
+
+
+def main():
+    lst, value = read()
+    write(bin_pow(lst, value[0]))
+
+
+if __name__ == "__main__":
+    main()

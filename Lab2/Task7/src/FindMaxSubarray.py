@@ -1,4 +1,5 @@
 import typing as tp
+from Utils.Read_n_Write import *
 
 
 def find_max_subarray(lst: tp.List[int]) -> tp.Tuple[int, int, int]:
@@ -56,4 +57,15 @@ def find_max_subarray_naive(lst: tp.List[int]) -> tp.Tuple[int, int, int]:
                 left, right = l, r
 
     return max_subarray, left, right
+
+
+def main():
+    lst, = read()
+    sm, start, end = find_max_subarray(lst)
+    write(f"start: {start}", f"end: {end}", f"sum: {sm}", sep="\n")
+
+
+if __name__ == "__main__":
+    main()
+
 

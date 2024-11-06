@@ -1,6 +1,6 @@
 from random import randint
-
-from Lab2.Task5.src.MajorityElement import majority_element_recursion, majority_element_line
+from Lab2.Task5.src.MajorityElement import *
+from Utils.Time_Memory import time_data
 
 
 def test_majority_elem():
@@ -22,5 +22,7 @@ def test_majority_elem_random():
                 (0, zeros) if zeros > ones else (1, ones) ==
                 majority_element_line(lst))
 
-
+def test_time():
+    time = time_data(main)
+    assert time < 2
 

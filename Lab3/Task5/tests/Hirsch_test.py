@@ -1,6 +1,5 @@
-from Lab3.Task5.src.Hirsch import hirsch
+from Lab3.Task5.src.Hirsch import *
 from Utils.Time_Memory import time_data
-from Lab3.Task5.src.main import main
 
 
 def test_hirsch_first_example():

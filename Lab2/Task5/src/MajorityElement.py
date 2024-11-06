@@ -1,4 +1,5 @@
 import typing as tp
+from Utils.Read_n_Write import *
 
 
 def majority_element_recursion(lst: tp.List[int], start: int = 0, end: int = -1) -> tp.Tuple[tp.Optional[int], int]:
@@ -75,6 +76,17 @@ def majority_element_line(lst: tp.List[int]) -> tp.Tuple[tp.Optional[int], int]:
             cnt += 1
 
     return (candidate, cnt) if cnt > len(lst) // 2 else (None, -1)
+
+
+def main():
+    lst, = read()
+    element, number = majority_element_recursion(lst)
+    write(0 if number == -1 else 1)
+
+
+if __name__ == "__main__":
+    main()
+
 
 
 

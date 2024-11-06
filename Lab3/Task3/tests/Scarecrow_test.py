@@ -1,7 +1,6 @@
 from random import randint
-from Lab3.Task3.src.ScarecrowSort import scarecrow_sort_checking_indexes, scarecrow_sort_real_sorting
+from Lab3.Task3.src.ScarecrowSort import *
 from Utils.Time_Memory import time_data
-from Lab3.Task3.src.main import main
 
 
 

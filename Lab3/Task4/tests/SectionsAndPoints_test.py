@@ -1,7 +1,6 @@
 from random import randint
-from Lab3.Task4.src.SectionsAndPoints import sections_n_points, sections_n_points_naive
+from Lab3.Task4.src.SectionsAndPoints import *
 from Utils.Time_Memory import time_data
-from Lab3.Task4.src.main import main
 
 
 def test_sections_n_points():

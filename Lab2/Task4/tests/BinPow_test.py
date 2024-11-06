@@ -1,6 +1,6 @@
 from random import randint
-
-from Lab2.Task4.src.BinPow import bin_pow
+from Lab2.Task4.src.BinPow import *
+from Utils.Time_Memory import time_data
 
 
 def test_bin_pow():
@@ -14,3 +14,8 @@ def test_bin_pow():
             assert value not in lst
         else:
             assert lst[index] == value
+
+
+def test_time():
+    time = time_data(main)
+    assert time < 2

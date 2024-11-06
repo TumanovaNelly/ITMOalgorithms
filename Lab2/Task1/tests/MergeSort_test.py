@@ -1,6 +1,6 @@
 from random import randint
-
-from Lab2.Task1.src.MergeSort import merge, merge_sort
+from Lab2.Task1.src.MergeSort import *
+from Utils.Time_Memory import time_data
 
 
 def test_merge():
@@ -28,3 +28,7 @@ def test_merge_sort_one_elem():
     lst = [100]
     merge_sort(lst)
     assert lst == [100]
+
+def test_time():
+    time = time_data(main)
+    assert time < 2

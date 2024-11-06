@@ -1,5 +1,6 @@
 from typing import List, Tuple, TypeVar
 from random import randint
+from Utils.Read_n_Write import *
 
 
 T = TypeVar("T")
@@ -29,5 +30,15 @@ def quick_sort(lst: List[T], start: int = 0, end: int = -1) -> None:
     end_left, end_mid = partition(lst, start, end, lst[randint(start,  end - 1)])
     quick_sort(lst, start, end_left)
     quick_sort(lst, end_mid, end)
+
+
+def main():
+    lst, = read()
+    quick_sort(lst)
+    write(*lst)
+
+
+if __name__ == "__main__":
+    main()
 
 

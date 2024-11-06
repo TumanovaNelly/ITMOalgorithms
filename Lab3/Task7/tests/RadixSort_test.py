@@ -1,6 +1,5 @@
-from Lab3.Task7.src.RadixSort import radix_sort
+from Lab3.Task7.src.RadixSort import *
 from Utils.Time_Memory import time_data
-from Lab3.Task7.src.main import main
 
 
 def test_radix_sort_first_example():

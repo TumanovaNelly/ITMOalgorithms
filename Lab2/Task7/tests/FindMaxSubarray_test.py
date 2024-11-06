@@ -1,6 +1,6 @@
 from random import randint
-
-from Lab2.Task7.src.FindMaxSubarray import find_max_subarray, find_max_subarray_naive
+from Lab2.Task7.src.FindMaxSubarray import *
+from Utils.Time_Memory import time_data
 
 
 def test_find_max_subarray():
@@ -19,3 +19,7 @@ def test_find_max_subarray_all_pos():
     for _ in range(1000):
         lst = [randint(0, 100) for _ in range(100)]
         assert find_max_subarray(lst)[0] == sum(lst)
+
+def test_time():
+    time = time_data(main)
+    assert time < 2
