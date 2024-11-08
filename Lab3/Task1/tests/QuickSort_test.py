@@ -17,14 +17,14 @@ def test_partition():
 def test_quick_sort_random_int():
     lst = [randint(-100, 100) for _ in range(1000)]
     lst_sorted = sorted(lst)
-    quick_sort(lst, 0, len(lst))
+    quick_sort(lst)
     assert lst == lst_sorted
 
 
 def test_quick_sort_random_str():
     lst = [str(randint(10, 100)) for _ in range(1000)]
     lst_sorted = sorted(lst)
-    quick_sort(lst, 0, len(lst))
+    quick_sort(lst)
     assert lst == lst_sorted
 
 
