@@ -32,3 +32,4 @@ def test_merge_sort_one_elem():
 def test_time():
     time = time_data(main)
     assert time < 2
+
