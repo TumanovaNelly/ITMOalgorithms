@@ -3,15 +3,6 @@ from Utils.Read_n_Write import *
 
 
 def mult_polynomials(f: tp.List[int], g: tp.List[int]) -> tp.List[int]:
-    """
-    Умножение полинома f на полином g (если степени полиномов разные, они дополняются нулями)
-    Полиномы представляются в виде:
-    f = [a0 + a1 * x + a2 * x^2 + ...], g = [b0 + b1 * x + b2 * x^2 + ...]
-    :param f: [a0, a1, a2, ...]
-    :param g: [b0, b1, b2, ...]
-    :return: полином степени deg(f) + deg(g) - 1 в аналогичном виде
-    """
-
     if not f or not g:
         raise ValueError("Empty polynomials")
 
@@ -69,15 +60,6 @@ def mult_polynomials(f: tp.List[int], g: tp.List[int]) -> tp.List[int]:
 
 #_______________________________________________
 def mult_polynomials_naive(f: tp.List[int], g: tp.List[int]) -> tp.List[int]:
-    """
-    Умножение полинома f на полином g наивным способом (если степени полиномов разные, они дополняются нулями)
-    Полиномы представляются в виде:
-    f = [a0 + a1 * x + a2 * x^2 + ...], g = [b0 + b1 * x + b2 * x^2 + ...]
-    :param f: [a0, a1, a2, ...]
-    :param g: [b0, b1, b2, ...]
-    :return: полином степени deg(f) + deg(g) - 1 в аналогичном виде
-    """
-
     if not f or not g:
         raise ValueError("Empty polynomials")
 
