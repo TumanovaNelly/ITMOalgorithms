@@ -32,5 +32,5 @@ notepad Lab2/Task%/txtf/output.txt
 ```
 6. Чтобы проверить время выполнения программы % и занятую память:
 ```bash
-python3 Lab2/Task%/tests/Time_Memory.py
+python3 Lab2/Task%/tests/InsertionSort_test.py
 ```

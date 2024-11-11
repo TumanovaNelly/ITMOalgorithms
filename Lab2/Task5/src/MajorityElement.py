@@ -1,5 +1,5 @@
 import typing as tp
-from Utils.Read_n_Write import *
+from Utils.Read_n_Write import read, write
 
 
 def majority_element_recursion(lst: tp.List[int], start: int = 0, end: int = -1) -> tp.Tuple[tp.Optional[int], int]:

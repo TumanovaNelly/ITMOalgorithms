@@ -1,5 +1,5 @@
 import typing as tp
-from Utils.Read_n_Write import *
+from Utils.Read_n_Write import read, write
 
 
 def bin_pow(lst: tp.List[int], value: int) -> int:

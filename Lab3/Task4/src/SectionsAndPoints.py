@@ -1,7 +1,7 @@
 from collections.abc import Iterator
 from typing import List, Tuple
 from Lab3.Task1.src.QuickSort import quick_sort
-from Utils.Read_n_Write import *
+from Utils.Read_n_Write import read, write
 
 
 # флаги

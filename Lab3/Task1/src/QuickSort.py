@@ -1,6 +1,6 @@
 from typing import List, Tuple, TypeVar
 from random import randint
-from Utils.Read_n_Write import *
+from Utils.Read_n_Write import read, write
 
 
 T = TypeVar("T")

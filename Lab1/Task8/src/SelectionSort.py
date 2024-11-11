@@ -1,3 +1,6 @@
+from utils import read, write
+
+
 def selection_sort(lst: list):
     for start in range(len(lst) - 1):
         mn = [lst[start], start]
@@ -9,3 +12,12 @@ def selection_sort(lst: list):
             yield f"Swap elements at indices {start + 1} and {mn[1] + 1}."
 
     yield "No more swaps needed."
+
+
+def main():
+    lst, = read()
+    write(*selection_sort(lst), sep="\n")
+
+
+if __name__ == "__main__":
+    main()

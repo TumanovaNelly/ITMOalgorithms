@@ -1,3 +1,6 @@
+from utils import read, write
+
+
 def bubble_sort(lst: list) -> None:
     for left in range(len(lst) - 1):
         flag = False
@@ -7,3 +10,13 @@ def bubble_sort(lst: list) -> None:
                 flag = True
 
         if not flag: break
+
+
+def main():
+    lst, = read()
+    bubble_sort(lst)
+    write(*lst)
+
+
+if __name__ == "__main__":
+    main()

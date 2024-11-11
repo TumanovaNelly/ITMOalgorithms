@@ -1,5 +1,5 @@
 import typing as tp
-from Utils.Read_n_Write import *
+from Utils.Read_n_Write import read, write
 
 
 def merge_count_inversions(list1: tp.List[int], list2: tp.List[int], target: tp.List[int], start_index: int = 0) -> int:

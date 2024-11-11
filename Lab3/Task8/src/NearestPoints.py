@@ -1,4 +1,4 @@
-from Utils.Read_n_Write import *
+from Utils.Read_n_Write import read, write
 from typing import List, Tuple
 from random import randint
 

@@ -1,3 +1,6 @@
+from utils import read, write
+
+
 def insertion_sort_indexes_bin_pow(lst: list) -> list:
 	output_lst = [1]
 
@@ -32,3 +35,12 @@ def insertion_sort_indexes(lst: list) -> list:
 		output_lst.append(cur + 1)
 
 	return output_lst
+
+
+def main():
+	lst, = read()
+	write(*insertion_sort_indexes_bin_pow(lst))
+
+
+if __name__ == "__main__":
+	main()

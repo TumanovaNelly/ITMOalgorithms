@@ -1,3 +1,6 @@
+from utils import read, write
+
+
 def find(lst: list, value) -> list:
     indexes = []
     for i in range(len(lst)):
@@ -7,3 +10,12 @@ def find(lst: list, value) -> list:
     if not indexes:
         indexes.append(-1)
     return indexes
+
+
+def main():
+    lst, value = read()
+    write(*find(lst, value[0]))
+
+
+if __name__ == "__main__":
+    main()

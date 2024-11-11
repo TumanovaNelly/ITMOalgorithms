@@ -1,5 +1,5 @@
 from typing import List
-from Utils.Read_n_Write import *
+from Utils.Read_n_Write import read, write
 
 
 def counting_sort(lst: List[str], indexes_lst: List[int], index: int):

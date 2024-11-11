@@ -1,6 +1,9 @@
-from Lab1.Task1.src.InsertionSort import insertion_sort, insertion_sort_bin_pow
 from random import randint
-import pytest
+
+from utils import time_data, memory_data
+from Lab1.Task1.src.InsertionSort import insertion_sort, insertion_sort_bin_pow, main
+
+
 
 def test_already_sorted():
     lst1 = [1, 2, 3, 4, 5]
@@ -9,12 +12,14 @@ def test_already_sorted():
     insertion_sort_bin_pow(lst2)
     assert lst1 == lst2 == [1, 2, 3, 4, 5]
 
+
 def test_reverse_order():
     lst1 = [5, 4, 3, 2, 1]
     lst2 = lst1[:]
     insertion_sort(lst1)
     insertion_sort_bin_pow(lst2)
     assert lst1 == lst2 == [1, 2, 3, 4, 5]
+
 
 def test_random_order():
     lst1 = [3, 1, 4, 1, 5, 9, 2]
@@ -23,6 +28,7 @@ def test_random_order():
     insertion_sort_bin_pow(lst2)
     assert lst1 == lst2 == [1, 1, 2, 3, 4, 5, 9]
 
+
 def test_duplicate_elements():
     lst1 = [2, 2, 2, 2, 2]
     lst2 = lst1[:]
@@ -30,12 +36,14 @@ def test_duplicate_elements():
     insertion_sort_bin_pow(lst2)
     assert lst1 == lst2 == [2, 2, 2, 2, 2]
 
+
 def test_empty_list():
     lst1 = []
     lst2 = lst1[:]
     insertion_sort(lst1)
     insertion_sort_bin_pow(lst2)
     assert lst1 == lst2 == []
+
 
 def test_single_element():
     lst1 = [42]
@@ -56,6 +64,12 @@ def test_random():
         assert lst1 == lst2 == lst
 
 
+def test_time():
+    assert time_data(main) < 2
 
-if __name__ == "__main__":
-    pytest.main()
+
+def test_memory_data():
+    cur, peak = memory_data(main)
+    assert cur < 1
+    assert peak < 1
+

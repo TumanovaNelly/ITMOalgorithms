@@ -1,5 +1,5 @@
 import typing as tp
-from Utils.Read_n_Write import *
+from Utils.Read_n_Write import read, write
 
 
 def find_max_subarray(lst: tp.List[int]) -> tp.Tuple[int, int, int]:

@@ -1,3 +1,6 @@
+from utils import read, write
+
+
 def insertion_sort_reversed_bin_pow(lst: list) -> None:
 	for i in range(1, len(lst)):
 		key = lst[i]
@@ -15,9 +18,21 @@ def insertion_sort_reversed_bin_pow(lst: list) -> None:
 
 		lst[right] = key
 
+
 def insertion_sort_reversed(lst: list) -> None:
 	for i in range(1, len(lst)):
 		cur = i
 		while cur > 0 and lst[cur - 1] < lst[cur]:
 			lst[cur - 1], lst[cur] = lst[cur], lst[cur - 1]
 			cur -= 1
+
+
+def main():
+	lst, = read()
+	insertion_sort_reversed(lst)
+	write(*lst)
+
+
+if __name__ == "__main__":
+	main()
+

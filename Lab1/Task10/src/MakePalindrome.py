@@ -1,5 +1,8 @@
-from Lab1.Task1.src.InsertionSort import insertion_sort_bin_pow
 from string import ascii_uppercase
+
+from utils import read, write
+from Lab1.Task1.src.InsertionSort import insertion_sort_bin_pow
+
 
 def make_palindrome_general(letters_str: str) -> str:
     letters = list(letters_str)
@@ -40,3 +43,12 @@ def make_palindrome(letters: str) -> str:
         palindrome_half.extend([chr(ord("A") + i)] * (letters_cnt[i] // 2))
 
     return "".join(palindrome_half + [center] + list(reversed(palindrome_half)))
+
+
+def main():
+    letters, = read(type_convert=str)
+    write(make_palindrome(*letters))
+
+
+if __name__ == "__main__":
+    main()

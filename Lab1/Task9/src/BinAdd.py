@@ -1,3 +1,6 @@
+from utils import read, write
+
+
 def bin_add(first: list, second: list) -> list:
 	if len(first) < len(second):
 		first = [0] * (len(second) - len(first)) + first
@@ -16,3 +19,14 @@ def bin_add(first: list, second: list) -> list:
 			result[i + 1] -= 2
 
 	return result
+
+
+def main():
+	(first, second), = read(type_convert=str)
+	first = list(map(int, list(first)))
+	second = list(map(int, list(second)))
+	write(*bin_add(first, second), sep="")
+
+
+if __name__ == "__main__":
+	main()
