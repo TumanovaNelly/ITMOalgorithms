@@ -1,6 +1,7 @@
 from random import shuffle
-from Lab2.Task3.src.CountInversions import *
-from Utils.Time_Memory import time_data
+
+from Lab2.Task3.src.CountInversions import count_inversions_naive, merge_sort_count_inversions, main
+from utils import time_data, memory_data
 
 
 def test_merge_sort_count_inversions():
@@ -11,5 +12,10 @@ def test_merge_sort_count_inversions():
 
 
 def test_time():
-    time = time_data(main)
-    assert time < 2
+    assert time_data(main) < 2
+
+
+def test_memory_data():
+    cur, peak = memory_data(main)
+    assert cur < 1
+    assert peak < 1

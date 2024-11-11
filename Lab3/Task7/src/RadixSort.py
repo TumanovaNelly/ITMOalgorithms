@@ -1,5 +1,6 @@
 from typing import List
-from Utils.Read_n_Write import read, write
+
+from utils import read, write
 
 
 def counting_sort(lst: List[str], indexes_lst: List[int], index: int):
@@ -31,13 +32,11 @@ def radix_sort(lst: List[str], lens: int, number: int):
 
 
 def main():
-    with open(r"..\txtf\input.txt") as file:
-        lens, number = map(int, file.readline().split())
-        lst = []
-        while True:
-            line = file.readline()
-            if line: lst.append(line)
-            else: break
+    (lens, number), *lines = read(type_convert=str)
+    lst = []
+    for word, in lines:
+        lst.append(word)
+    lens, number = int(lens), int(number)
     write(*radix_sort(lst, lens, number))
 
 

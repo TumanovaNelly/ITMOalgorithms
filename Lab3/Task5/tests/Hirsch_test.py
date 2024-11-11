@@ -1,5 +1,5 @@
-from Lab3.Task5.src.Hirsch import *
-from Utils.Time_Memory import time_data
+from Lab3.Task5.src.Hirsch import hirsch, main
+from utils import time_data, memory_data
 
 
 def test_hirsch_first_example():
@@ -13,8 +13,13 @@ def test_hirsch_second_example():
 
 
 def test_time():
-    time = time_data(main)
-    assert time < 2
+    assert time_data(main) < 2
+
+
+def test_memory_data():
+    cur, peak = memory_data(main)
+    assert cur < 5
+    assert peak < 5
 
 
 

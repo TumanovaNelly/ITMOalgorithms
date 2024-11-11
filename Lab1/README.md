@@ -23,5 +23,5 @@ python3 Lab1/Task*/src/main.py
 ```
 4. Чтобы проверить время выполнения программы * и занятую память:
 ```bash
-python3 Lab1/Task*/tests/InsertionSort_test.py
+python3 Lab1/Task*/tests/InsertionSortIndexes_test.py
 ```

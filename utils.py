@@ -1,7 +1,13 @@
 from typing import Tuple
 import tracemalloc
 import time
+from inspect import stack
+from os.path import abspath, dirname
 
+
+def get_calling_file_path():
+    file_path = stack()[2].filename
+    return abspath(file_path)
 
 
 def read(filename: str = r'..\txtf\input.txt', type_convert: type = int):
@@ -11,6 +17,8 @@ def read(filename: str = r'..\txtf\input.txt', type_convert: type = int):
     :param type_convert: все данные в файле будут конвертироваться в списки с данными этого типа
     :return: генератор списков строк
     """
+    filename = fr'{dirname(get_calling_file_path())}\{filename}'
+
     with open(filename) as file:
         while True:
             line = file.readline().split()
@@ -30,6 +38,8 @@ def write(*values, sep: str = " ", filename: str = r'..\txtf\output.txt', to_end
     :param filename: имя файла, куда будут записываться данные
     :param to_end: определяет, будет ли перезаписан файл или данные будут записаны в конец файла
     """
+    filename = fr'{dirname(get_calling_file_path())}\{filename}'
+
     mode = 'w'
     if to_end:
         mode = 'a'
@@ -41,7 +51,7 @@ def write(*values, sep: str = " ", filename: str = r'..\txtf\output.txt', to_end
 
 def time_data(func) -> float:
     """
-    Запускает функцию func и возвращает время ее выполнения
+    Запускает функцию func и возвращает время ее выполнения в секундах
     :param func: функция, время которой нужно проверить
     :return: время выполнения func
     """
@@ -52,7 +62,7 @@ def time_data(func) -> float:
 
 def memory_data(func) -> Tuple[float, float]:
     """
-    Запускает функцию func и возвращает данные о памяти, занятой при ее выполнении
+    Запускает функцию func и возвращает данные о памяти, занятой при ее выполнении, в Mб
     :param func: функция, память которой нужно проверить
     :return: занятая и пиковая память соотв.
     """

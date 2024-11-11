@@ -1,5 +1,7 @@
-from Utils.Time_Memory import time_data
-from Lab3.Task8.src.NearestPoints import *
+from random import randint
+
+from utils import time_data, memory_data
+from Lab3.Task8.src.NearestPoints import quick_sort_by_norma, nearest_points_as_quick_sort, get_norma, main
 
 
 def test_quick_sort_by_norma():
@@ -23,5 +25,10 @@ def test_nearest_points_as_quick_sort():
 
 
 def test_time():
-    time = time_data(main)
-    assert time < 2
+    assert time_data(main) < 2
+
+
+def test_memory_data():
+    cur, peak = memory_data(main)
+    assert cur < 5
+    assert peak < 5

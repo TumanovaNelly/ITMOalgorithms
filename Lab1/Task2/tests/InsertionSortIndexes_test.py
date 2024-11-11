@@ -1,5 +1,5 @@
 from utils import time_data, memory_data
-from Lab1.Task2.src.InsertionSort import main
+from Lab1.Task2.src.InsertionSortIndexes import main
 
 
 def test_time():

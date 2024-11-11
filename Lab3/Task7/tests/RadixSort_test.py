@@ -1,5 +1,5 @@
-from Lab3.Task7.src.RadixSort import *
-from Utils.Time_Memory import time_data
+from Lab3.Task7.src.RadixSort import radix_sort, main
+from utils import time_data, memory_data
 
 
 def test_radix_sort_first_example():
@@ -18,6 +18,11 @@ def test_radix_sort_third_example():
 
 
 def test_time():
-    time = time_data(main)
-    assert time < 3
+    assert time_data(main) < 2
+
+
+def test_memory_data():
+    cur, peak = memory_data(main)
+    assert cur < 5
+    assert peak < 5
 

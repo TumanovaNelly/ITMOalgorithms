@@ -1,5 +1,7 @@
-from Lab3.Task1.src.QuickSort import *
-from Utils.Time_Memory import time_data
+from random import randint
+
+from Lab3.Task1.src.QuickSort import partition, quick_sort, main
+from utils import time_data, memory_data
 
 
 def test_partition():
@@ -29,6 +31,11 @@ def test_quick_sort_random_str():
 
 
 def test_time():
-    time = time_data(main)
-    assert time < 2
+    assert time_data(main) < 2
+
+
+def test_memory_data():
+    cur, peak = memory_data(main)
+    assert cur < 1
+    assert peak < 1
 

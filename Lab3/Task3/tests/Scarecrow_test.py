@@ -1,6 +1,6 @@
 from random import randint
-from Lab3.Task3.src.ScarecrowSort import *
-from Utils.Time_Memory import time_data
+from Lab3.Task3.src.ScarecrowSort import scarecrow_sort_real_sorting, scarecrow_sort_checking_indexes, main
+from utils import time_data, memory_data
 
 
 
@@ -37,5 +37,10 @@ def test_simple_delta():
 
 
 def test_time():
-    time = time_data(main)
-    assert time < 2
+    assert time_data(main) < 2
+
+
+def test_memory_data():
+    cur, peak = memory_data(main)
+    assert cur < 5
+    assert peak < 5

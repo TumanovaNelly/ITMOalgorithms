@@ -1,6 +1,6 @@
 from random import randint
-from Lab3.Task4.src.SectionsAndPoints import *
-from Utils.Time_Memory import time_data
+from Lab3.Task4.src.SectionsAndPoints import sections_n_points, sections_n_points_naive, main
+from utils import time_data, memory_data
 
 
 def test_sections_n_points():
@@ -32,5 +32,10 @@ def test_sections_n_points_random():
 
 
 def test_time():
-    time = time_data(main)
-    assert time < 2
+    assert time_data(main) < 2
+
+
+def test_memory_data():
+    cur, peak = memory_data(main)
+    assert cur < 5
+    assert peak < 5

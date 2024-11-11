@@ -1,5 +1,5 @@
 import typing as tp
-from Utils.Read_n_Write import read, write
+from utils import read, write
 
 
 def mult_polynomials(f: tp.List[int], g: tp.List[int]) -> tp.List[int]:

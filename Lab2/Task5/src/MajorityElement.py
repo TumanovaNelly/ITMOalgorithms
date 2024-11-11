@@ -1,5 +1,5 @@
 import typing as tp
-from Utils.Read_n_Write import read, write
+from utils import read, write
 
 
 def majority_element_recursion(lst: tp.List[int], start: int = 0, end: int = -1) -> tp.Tuple[tp.Optional[int], int]:
@@ -34,13 +34,6 @@ def majority_element_recursion(lst: tp.List[int], start: int = 0, end: int = -1)
 
 
 def majority_element_line(lst: tp.List[int]) -> tp.Tuple[tp.Optional[int], int]:
-    """
-    Поиск мажорирующего элемента в lst за линию
-    :param lst: список
-    :return: значение мажорирующего элемента (None, если его нет) и
-    количество раз, которое он встречается в списке (-1, если его нет)
-    """
-
     num_without_pair = 0 # количество элементов которые пока без пары
     candidate = None # Значение элементов без пары
     for elem in lst:

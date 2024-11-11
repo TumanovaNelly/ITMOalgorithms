@@ -1,6 +1,8 @@
-from Utils.Read_n_Write import read, write
 from typing import List, Tuple
 from random import randint
+
+from utils import read, write
+
 
 
 def get_norma(point: Tuple[int, int]):
@@ -69,7 +71,7 @@ def nearest_points_as_quick_sort(lst: List[Tuple[int, int]], number: int, output
 
 
 def main():
-    number, *lst = read()
+    (number, ), *lst = read()
     answer = []
     nearest_points_as_quick_sort(lst, number, answer)
     write(*answer)

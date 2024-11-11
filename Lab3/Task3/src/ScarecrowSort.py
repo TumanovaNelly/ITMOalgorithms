@@ -1,6 +1,7 @@
 from typing import List
+
 from Lab3.Task1.src.QuickSort import quick_sort
-from Utils.Read_n_Write import read, write
+from utils import read, write
 
 
 def scarecrow_sort_checking_indexes(lst: List[int], delta: int) -> bool:
