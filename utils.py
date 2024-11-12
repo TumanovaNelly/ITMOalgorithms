@@ -45,8 +45,7 @@ def write(*values, sep: str = " ", filename: str = r'..\txtf\output.txt', to_end
         mode = 'a'
 
     with open(filename, mode) as file:
-        for value in values:
-            print(value, end=sep, file=file)
+        print(*values, sep=sep, file=file)
 
 
 def time_data(func) -> float:

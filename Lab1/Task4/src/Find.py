@@ -13,8 +13,8 @@ def find(lst: list, value) -> list:
 
 
 def main():
-    lst, value = read()
-    write(*find(lst, value[0]))
+    lst, (value, ) = read()
+    write(*find(lst, value), sep=", ")
 
 
 if __name__ == "__main__":

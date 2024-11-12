@@ -1,6 +1,6 @@
 from typing import TypeVar
 from Lab4.Task13.src.SingleLinkedList import SingleLinkedList
-from Utils.Read_n_Write import read, write
+from utils import read, write
 
 T = TypeVar('T')
 

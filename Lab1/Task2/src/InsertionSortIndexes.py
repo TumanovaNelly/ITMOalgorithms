@@ -40,6 +40,7 @@ def insertion_sort_indexes(lst: list) -> list:
 def main():
 	lst, = read()
 	write(*insertion_sort_indexes_bin_pow(lst))
+	write(*lst, to_end=True)
 
 
 if __name__ == "__main__":

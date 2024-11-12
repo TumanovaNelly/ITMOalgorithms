@@ -18,7 +18,7 @@ def bubble_sort_indexes(lst: list) -> list:
 
 
 def main():
-    lst, = read()
+    lst, = read(type_convert=float)
     if len(lst) % 2 == 0:
         raise ValueError("The list must contain an odd number of elements")
 
