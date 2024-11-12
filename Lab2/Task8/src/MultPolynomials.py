@@ -7,9 +7,9 @@ def mult_polynomials(f: tp.List[int], g: tp.List[int]) -> tp.List[int]:
         raise ValueError("Empty polynomials")
 
     if len(f) < len(g):
-        f.extend([0] * (len(g) - len(f)))
+        f = ([0] * (len(g) - len(f))) + f
     elif len(f) > len(g):
-        g.extend([0] * (len(f) - len(g)))
+        g = ([0] * (len(f) - len(g))) + g
 
 
     def mult_polynomials_recursion(f: tp.List[int], g: tp.List[int],

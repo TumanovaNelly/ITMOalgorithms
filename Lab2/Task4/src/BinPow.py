@@ -29,8 +29,8 @@ def bin_pow(lst: tp.List[int], value: int) -> int:
 
 
 def main():
-    lst, value = read()
-    write(bin_pow(lst, value[0]))
+    lst, (value, ) = read()
+    write(bin_pow(lst, value))
 
 
 if __name__ == "__main__":

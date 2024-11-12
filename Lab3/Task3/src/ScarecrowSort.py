@@ -40,8 +40,8 @@ def scarecrow_sort_real_sorting(lst: List[int], delta: int) -> bool:
 
 
 def main():
-    delta, lst = read()
-    if scarecrow_sort_checking_indexes(lst, *delta):
+    (delta, ), lst = read()
+    if scarecrow_sort_checking_indexes(lst, delta):
         write("YES")
     else: write("NO")
 
