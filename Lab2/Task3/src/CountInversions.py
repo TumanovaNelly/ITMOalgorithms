@@ -62,6 +62,7 @@ def count_inversions_naive(lst: tp.List[int]) -> int:
 
 
 def main():
+
     lst, = read()
     write(merge_sort_count_inversions(lst))
 

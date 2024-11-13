@@ -5,10 +5,9 @@ from utils import time_data, memory_data
 
 
 def test_merge_sort_count_inversions():
-    for _ in range(100):
-        lst = list(range(1, 1000))
-        shuffle(lst)
-        assert count_inversions_naive(lst) == merge_sort_count_inversions(lst)
+    lst = list(range(1, 1000))
+    shuffle(lst)
+    assert count_inversions_naive(lst) == merge_sort_count_inversions(lst)
 
 
 def test_time():

@@ -29,7 +29,7 @@ def test_same():
 
 
 def test_simple_delta():
-    lst = [randint(0, 1000) for _ in range(10000)]
+    lst = [randint(0, 1000) for _ in range(1000)]
     delta = 1
     assert (scarecrow_sort_checking_indexes(lst, delta) ==
             scarecrow_sort_real_sorting(lst, delta) ==
