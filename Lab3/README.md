@@ -27,7 +27,7 @@ cd Lab3
 
 2. Для запуска всех задач выполните:
 ```bash
-python RunAll.cmd
+python RunAll.py
 ```
 
 
