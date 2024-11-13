@@ -5,11 +5,13 @@ from utils import time_data, memory_data
 
 def test_bin_pow():
     for _ in range(1000):
+        # given
         lst = [randint(-100, 100) for _ in range(1000)]
         lst.sort()
         value = randint(-100, 100)
-
+        # when
         index = bin_pow(lst, value)
+        # then
         if index == -1:
             assert value not in lst
         else:
