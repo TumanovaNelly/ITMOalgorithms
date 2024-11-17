@@ -1,5 +1,5 @@
 from utils import time_data, memory_data
-from Lab0.Task2.src.num1 import main
+from Lab0.Task2.src.Fib import main
 
 def test_time():
     assert time_data(main) < 2

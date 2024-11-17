@@ -6,7 +6,6 @@ import os
 import subprocess
 
 
-
 def get_calling_file_path():
     file_path = stack()[2].filename
     return os.path.abspath(file_path)
@@ -32,11 +31,13 @@ def read(filename: str = r'..\txtf\input.txt', type_convert: type = int):
             yield line
 
 
-def write(*values, sep: str = " ", filename: str = r'..\txtf\output.txt', to_end: bool = False) -> None:
+def write(*values, sep: str = " ", end: str = "\n", filename: str = r'..\txtf\output.txt',
+          to_end: bool = False) -> None:
     """
     Запись в файл списка values
     :param values: данные, которые необходимо записать
     :param sep: разделитель данных
+    :param end: строка, которая будет записана в конец данных
     :param filename: имя файла, куда будут записываться данные
     :param to_end: определяет, будет ли перезаписан файл или данные будут записаны в конец файла
     """
@@ -47,7 +48,7 @@ def write(*values, sep: str = " ", filename: str = r'..\txtf\output.txt', to_end
         mode = 'a'
 
     with open(filename, mode) as file:
-        print(*values, sep=sep, file=file)
+        print(*values, sep=sep, end=end, file=file)
 
 
 def time_data(func) -> float:
