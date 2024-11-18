@@ -1,5 +1,5 @@
 import unittest
-from Lab4.Task3.src.Brackets import check_brackets, answer_generator
+from Lab4.Task3.src.Brackets import check_brackets
 
 
 class TestCheckBrackets(unittest.TestCase):

@@ -33,5 +33,5 @@ python RunLabSources.py
 ## Тестирование
 Для запуска всех тестов для лабораторной выполните в папке Lab2:
 ```bash
-pytest 
+python RunLabTests.py
 ```

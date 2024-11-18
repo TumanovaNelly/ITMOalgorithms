@@ -1,5 +1,4 @@
 from utils import read, write
-from typing import List
 
 from Lab4.Task13.src.Stack import Stack
 
@@ -17,11 +16,6 @@ def check_brackets(brackets: str):
             stack.push(value)
 
     return stack.is_empty()
-
-
-def answer_generator(brackets_list: List[str]):
-    for bracket in brackets_list:
-        yield 'YES' if check_brackets(bracket) else 'NO'
 
 
 def main():

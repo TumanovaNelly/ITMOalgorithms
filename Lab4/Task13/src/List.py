@@ -99,7 +99,3 @@ class List:
             print(current_node.value, end=sep)
             current_node = current_node.next
         print()
-
-
-if __name__ == '__main__':
-    pass

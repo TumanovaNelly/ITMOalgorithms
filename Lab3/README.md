@@ -30,9 +30,8 @@ cd Lab3
 python RunLabSources.py
 ```
 
-
 ## Тестирование
 Для запуска всех тестов для лабораторной выполните в папке Lab3:
 ```bash
-pytest 
+python RunLabTests.py
 ```
