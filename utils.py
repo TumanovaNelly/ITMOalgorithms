@@ -74,6 +74,14 @@ def memory_data(func) -> Tuple[float, float]:
     return current / 1024 ** 2, peak / 1024 ** 2
 
 
+RESET = '\033[0m'      # Сброс цвета
+RED = '\033[31m'       # Красный
+GREEN = '\033[32m'     # Зеленый
+YELLOW = '\033[33m'    # Желтый
+BLUE = '\033[34m'      # Синий
+MAGENTA = '\033[35m'   # Фиолетовый
+CYAN = '\033[36m'      # Голубой
+
 def run_tasks(working_dir, root_dir):
     for file in os.listdir(working_dir):
         if file.startswith('Task'):
@@ -82,18 +90,23 @@ def run_tasks(working_dir, root_dir):
                 for fl in files:
                     run_path = os.path.relpath(os.path.join(root, fl), root_dir)
                     if fl.endswith('.py'):
-                        print(f'RUNNING {run_path}')
+                        print('—————————————————————————————————————————————')
+                        print(f'{MAGENTA}RUNNING {run_path}{RESET}')
                         subprocess.run(['python', run_path], cwd=root_dir)
 
-            input_file = os.path.join(working_dir, file, 'txtf', 'input.txt')
+            txtf_dir = os.path.join(working_dir, file, 'txtf')
+            if not os.path.exists(txtf_dir): continue
+            input_file = os.path.join(txtf_dir, 'input.txt')
+            if not os.path.exists(input_file): continue
             print('---------------------------------------------')
-            print('ВХОДНЫЕ ДАННЫЕ')
+            print(f'{GREEN}ВХОДНЫЕ ДАННЫЕ{RESET}')
             for line in read(os.path.relpath(input_file, root_dir), type_convert=str):
                 print(*line)
 
             print('---------------------------------------------')
-            print('ВЫХОДНЫЕ ДАННЫЕ')
+            print(f'{GREEN}ВЫХОДНЫЕ ДАННЫЕ{RESET}')
             output_file = os.path.join(working_dir, file, 'txtf', 'output.txt')
+            if not os.path.exists(output_file): continue
             for line in read(os.path.relpath(output_file, root_dir), type_convert=str):
                 print(*line)
-            print('—————————————————————————————————————————————')
+
