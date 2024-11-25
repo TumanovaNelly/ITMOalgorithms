@@ -1,6 +1,7 @@
 import unittest
 from typing import TypeVar
-from Lab4.Task9.src.Polyclinic import Queue
+from Lab4.Task9.src.Polyclinic import Queue, main
+from utils import time_data, memory_data
 
 T = TypeVar('T')
 
@@ -102,6 +103,13 @@ class TestQueue(unittest.TestCase):
 
         self.assertEqual(captured_output.getvalue(), "1 2 3 \n")
 
+    def test_time(self):
+        assert time_data(main) < 2
+
+    def test_memory_data(self):
+        cur, peak = memory_data(main)
+        assert cur < 5
+        assert peak < 5
 
 if __name__ == '__main__':
     unittest.main()

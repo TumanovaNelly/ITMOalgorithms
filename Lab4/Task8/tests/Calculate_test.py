@@ -1,5 +1,6 @@
 import unittest
-from Lab4.Task8.src.Calculate import calculate  # замените на правильный путь к вашему модулю
+from Lab4.Task8.src.Calculate import calculate, main
+from utils import time_data, memory_data
 
 
 class TestCalculate(unittest.TestCase):
@@ -39,6 +40,13 @@ class TestCalculate(unittest.TestCase):
         with self.assertRaises(IndexError):
             calculate(expression)
 
+    def test_time(self):
+        assert time_data(main) < 2
+
+    def test_memory_data(self):
+        cur, peak = memory_data(main)
+        assert cur < 5
+        assert peak < 5
 
 if __name__ == '__main__':
     unittest.main()

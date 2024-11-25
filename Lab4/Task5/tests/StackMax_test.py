@@ -1,5 +1,6 @@
 import unittest
-from Lab4.Task5.src.StackMax import Stack
+from Lab4.Task5.src.StackMax import Stack, main
+from utils import time_data, memory_data
 
 
 class TestStack(unittest.TestCase):
@@ -57,6 +58,13 @@ class TestStack(unittest.TestCase):
         self.assertEqual(self.stack.max(), 45)
         self.assertEqual(self.stack.pop(), 45)
 
+    def test_time(self):
+        assert time_data(main) < 2
+
+    def test_memory_data(self):
+        cur, peak = memory_data(main)
+        assert cur < 5
+        assert peak < 5
 
 
 if __name__ == '__main__':
