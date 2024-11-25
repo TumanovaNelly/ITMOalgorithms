@@ -6,12 +6,12 @@ from utils import time_data, memory_data
 class TestStack(unittest.TestCase):
 
     def test_time(self):
-        assert time_data(main) < 2
+        self.assertTrue(time_data(main) < 2)
 
     def test_memory_data(self):
         cur, peak = memory_data(main)
-        assert cur < 5
-        assert peak < 5
+        self.assertTrue(cur < 5)
+        self.assertTrue(peak < 5)
 
 
 if __name__ == "__main__":
