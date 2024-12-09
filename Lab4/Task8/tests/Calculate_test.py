@@ -1,52 +1,66 @@
 import unittest
+
 from Lab4.Task8.src.Calculate import calculate, main
 from utils import time_data, memory_data
 
 
 class TestCalculate(unittest.TestCase):
+    def test_simple_expressions(self):
+        # given
+        expressions = [
+            ['42'],
+            ['2', '3', '+'],
+            ['5', '2', '-'],
+            ['4', '6', '*']
+        ]
+        expected_results = [42, 5, 3, 24]
 
-    def test_addition(self):
-        expression = ['2', '3', '+']
-        self.assertEqual(calculate(expression), 5)
+        for index, expression in enumerate(expressions):
+            # when
+            result = calculate(expression)
 
-    def test_subtraction(self):
-        expression = ['5', '2', '-']
-        self.assertEqual(calculate(expression), 3)
+            # then
+            self.assertEqual(result, expected_results[index])
 
-    def test_multiplication(self):
-        expression = ['4', '6', '*']
-        self.assertEqual(calculate(expression), 24)
+    def test_complex_expressions(self):
+        # given
+        expressions = [
+            # (8 + 9) * (1 - 7) = -6 * 17
+            ['8', '9', '+', '1', '7', '-', '*'],
+            # 100 - (4 + 5 * (2 + 3) * 2 - 3) * 3 = 100 - 51 * 3
+            ['100', '4', '5', '2', '3', '+', '2', '*', '*', '+', '3', '-', '3', '*', '-']]
+        expected_results = [-102, -53]
 
-    def test_complex_expression(self):
-        # (8 + 9) * (1 - 7) = -6 * 17
-        expression = ['8', '9', '+', '1', '7', '-', '*']
-        self.assertEqual(calculate(expression), -102)
+        for index, expression in enumerate(expressions):
+            # when
+            result = calculate(expression)
 
-        # 100 - (4 + 5 * (2 + 3) * 2 - 3) * 3 = 100 - 51 * 3
-        expression = ['100', '4', '5', '2', '3', '+', '2', '*', '*', '+', '3', '-', '3', '*', '-']
-        self.assertEqual(calculate(expression), -53)
-
-    def test_single_number(self):
-        expression = ['42']
-        self.assertEqual(calculate(expression), 42)
+            # then
+            self.assertEqual(result, expected_results[index])
 
     def test_invalid_operator(self):
         expression = ['2', '3', '/', '+']
-        with self.assertRaises(KeyError):
-            calculate(expression)
+        self.assertRaises(KeyError, calculate, expression)
 
     def test_empty_expression(self):
         expression = []
-        with self.assertRaises(IndexError):
-            calculate(expression)
+        self.assertRaises(IndexError, calculate, expression)
 
     def test_time(self):
-        self.assertTrue(time_data(main) < 2)
+        # when
+        time = time_data(main)
+
+        # then
+        self.assertLess(time, 2)
 
     def test_memory_data(self):
+        # when
         cur, peak = memory_data(main)
-        self.assertTrue(cur < 5)
-        self.assertTrue(peak < 5)
+
+        # then
+        self.assertLess(cur, 2)
+        self.assertLess(peak, 2)
+
 
 if __name__ == '__main__':
     unittest.main()

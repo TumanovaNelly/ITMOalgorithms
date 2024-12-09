@@ -1,5 +1,7 @@
 from typing import Optional, List
+
 from Lab4.Task13.src.Queue import Queue
+from utils import read, write
 
 
 class TreeNode:
@@ -41,3 +43,11 @@ def build_tree(elements_data: List[int]) -> Optional[Tree]:
 
     return tree
 
+
+def main():
+    data, = read()
+    write(build_tree(data).height)
+
+
+if __name__ == '__main__':
+    main()

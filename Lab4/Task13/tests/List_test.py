@@ -15,84 +15,148 @@ class TestList(unittest.TestCase):
         self.assertIsNone(self.linked_list.tail)
 
     def test_push_back(self):
-        self.linked_list.push_back(10)
-        self.linked_list.push_back(20)
-        self.assertEqual(self.linked_list.head.value, 10)
-        self.assertEqual(self.linked_list.tail.value, 20)
-        self.assertEqual(len(self.linked_list), 2)
+        to_push_back = [1, 2, 3, 4, 5]
+        expected_lens = [1, 2, 3, 4, 5]
+        expected_head_tail_values = [(1, 1), (1, 2), (1, 3), (1, 4), (1, 5)]
+        for index, item in enumerate(to_push_back):
+            # when
+            self.linked_list.push_back(item)
+
+            # then
+            self.assertEqual(len(self.linked_list), expected_lens[index])
+            self.assertEqual(self.linked_list.head.value, expected_head_tail_values[index][0])
+            self.assertEqual(self.linked_list.tail.value, expected_head_tail_values[index][1])
 
     def test_push_front(self):
-        self.linked_list.push_front(10)
-        self.linked_list.push_front(20)
-        self.assertEqual(self.linked_list.head.value, 20)
-        self.assertEqual(self.linked_list.tail.value, 10)
-        self.assertEqual(len(self.linked_list), 2)
+        to_push_front = [1, 2, 3, 4, 5]
+        expected_lens = [1, 2, 3, 4, 5]
+        expected_head_tail_values = [(1, 1), (2, 1), (3, 1), (4, 1), (5, 1)]
+        for index, item in enumerate(to_push_front):
+            # when
+            self.linked_list.push_front(item)
+
+            # then
+            self.assertEqual(len(self.linked_list), expected_lens[index])
+            self.assertEqual(self.linked_list.head.value, expected_head_tail_values[index][0])
+            self.assertEqual(self.linked_list.tail.value, expected_head_tail_values[index][1])
 
     def test_pop_back(self):
-        with self.assertRaises(IndexError):
-            self.linked_list.pop_back()
+        self.assertRaises(IndexError, self.linked_list.pop_back)
 
-        self.linked_list.push_back(10)
-        self.linked_list.push_back(20)
-        self.assertEqual(self.linked_list.pop_back(), 20)
-        self.assertEqual(self.linked_list.pop_back(), 10)
+        for _ in range(5):
+            # given
+            to_push_back = [1, 2, 3]
+            for item in to_push_back:
+                self.linked_list.push_back(item)
+
+            expected_pops_back = [3, 2, 1]
+            expected_lens = [2, 1, 0]
+            expected_head_tail_values = [(1, 2), (1, 1)]
+
+            for index, item in enumerate(to_push_back):
+                # when
+                pop_elem = self.linked_list.pop_back()
+
+                # then
+                self.assertEqual(pop_elem, expected_pops_back[index])
+                self.assertEqual(len(self.linked_list), expected_lens[index])
+                if index < len(to_push_back) - 1:
+                    self.assertEqual(self.linked_list.head.value, expected_head_tail_values[index][0])
+                    self.assertEqual(self.linked_list.tail.value, expected_head_tail_values[index][1])
+
+            # then
+            self.assertIsNone(self.linked_list.head)
+            self.assertIsNone(self.linked_list.tail)
+
 
     def test_pop_front(self):
-        with self.assertRaises(IndexError):
-            self.linked_list.pop_front()
+        self.assertRaises(IndexError, self.linked_list.pop_front)
 
-        self.linked_list.push_front(10)
-        self.linked_list.push_front(20)
-        self.assertEqual(self.linked_list.pop_front(), 20)
-        self.assertEqual(self.linked_list.pop_front(), 10)
+        for _ in range(5):
+            # given
+            to_push_back = [1, 2, 3]
+            for item in to_push_back:
+                self.linked_list.push_back(item)
+
+            expected_pops_front = [1, 2, 3]
+            expected_lens = [2, 1, 0]
+            expected_head_tail_values = [(2, 3), (3, 3)]
+
+            for index, item in enumerate(to_push_back):
+                # when
+                pop_elem = self.linked_list.pop_front()
+
+                # then
+                self.assertEqual(pop_elem, expected_pops_front[index])
+                self.assertEqual(len(self.linked_list), expected_lens[index])
+                if index < len(to_push_back) - 1:
+                    self.assertEqual(self.linked_list.head.value, expected_head_tail_values[index][0])
+                    self.assertEqual(self.linked_list.tail.value, expected_head_tail_values[index][1])
+
+            # then
+            self.assertIsNone(self.linked_list.head)
+            self.assertIsNone(self.linked_list.tail)
 
     def test_find(self):
-        self.linked_list.push_back(10)
-        self.linked_list.push_back(20)
-        self.assertIsNotNone(self.linked_list.find(10))
-        with self.assertRaises(ValueError):
-            self.linked_list.find(200)
+        # given
+        to_push_back = [1, 2, 3]
+        for item in to_push_back:
+            self.linked_list.push_back(item)
+
+        # when
+        found_node = self.linked_list.find(2)
+
+        # then
+        self.assertIsNotNone(found_node)
+        self.assertEqual(found_node.value, 2)
+        self.assertRaises(ValueError, self.linked_list.find, 200)
+
 
     def test_remove_after(self):
-        self.linked_list.push_back(10)
-        self.linked_list.push_back(20)
-        self.linked_list.push_back(30)
-        self.linked_list.remove_after(20)
-        with self.assertRaises(ValueError):
-            self.linked_list.find(30)
+        # given
+        to_push_back = [1, 2, 3]
+        for item in to_push_back:
+            self.linked_list.push_back(item)
 
-        with self.assertRaises(ValueError):
-            self.linked_list.remove_after(40)
-        with self.assertRaises(IndexError):
-            self.linked_list.remove_after(20)
+        # when
+        self.linked_list.remove_after(2)
 
-        self.assertEqual(self.linked_list.head.value, 10)
-        self.assertEqual(self.linked_list.tail.value, 20)
+        # then
+        self.assertRaises(ValueError, self.linked_list.find, 3)
+        self.assertRaises(IndexError, self.linked_list.remove_after, 2)
+        self.assertRaises(ValueError, self.linked_list.remove_after, 200)
+        self.assertEqual(self.linked_list.head.value, 1)
+        self.assertEqual(self.linked_list.tail.value, 2)
 
     def test_remove_before(self):
-        self.linked_list.push_back(10)
-        self.linked_list.push_back(20)
-        self.linked_list.push_back(30)
-        self.linked_list.remove_before(20)
-        with self.assertRaises(ValueError):
-            self.linked_list.find(10)
+        # given
+        to_push_back = [1, 2, 3]
+        for item in to_push_back:
+            self.linked_list.push_back(item)
 
-        with self.assertRaises(ValueError):
-            self.linked_list.remove_before(40)
-        with self.assertRaises(IndexError):
-            self.linked_list.remove_before(20)
+        # when
+        self.linked_list.remove_before(2)
 
-        self.assertEqual(self.linked_list.head.value, 20)
-        self.assertEqual(self.linked_list.tail.value, 30)
+        # then
+        self.assertRaises(ValueError, self.linked_list.find, 1)
+        self.assertRaises(IndexError, self.linked_list.remove_before, 2)
+        self.assertRaises(ValueError, self.linked_list.remove_after, 200)
+        self.assertEqual(self.linked_list.head.value, 2)
+        self.assertEqual(self.linked_list.tail.value, 3)
 
     def test_print(self):
-        self.linked_list.push_back(1)
-        self.linked_list.push_back(2)
-        self.linked_list.push_back(3)
+        # given
+        to_push_back = [1, 2, 3]
+        for item in to_push_back:
+            self.linked_list.push_back(item)
+
+        # when
         captured_output = StringIO()
         sys.stdout = captured_output
         self.linked_list.print()
         sys.stdout = sys.__stdout__
+
+        # then
         self.assertEqual(captured_output.getvalue(), "1 2 3 \n")
 
 

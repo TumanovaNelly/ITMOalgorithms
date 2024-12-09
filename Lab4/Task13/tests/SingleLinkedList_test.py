@@ -14,70 +14,86 @@ class TestSingleLinkedList(unittest.TestCase):
         self.assertIsNone(self.linked_list.head)
 
     def test_push(self):
-        self.linked_list.push(1)
-        self.assertEqual(len(self.linked_list), 1)
-        self.assertEqual(self.linked_list.head.value, 1)
+        to_push = [1, 2, 3]
+        expected_lens = [1, 2, 3]
+        for index, item in enumerate(to_push):
+            # when
+            self.linked_list.push(item)
 
-        self.linked_list.push(2)
-        self.assertEqual(len(self.linked_list), 2)
-        self.assertEqual(self.linked_list.head.value, 2)
+            # then
+            self.assertEqual(len(self.linked_list), expected_lens[index])
+            self.assertEqual(self.linked_list.head.value, item)
 
     def test_pop(self):
-        with self.assertRaises(IndexError):
-            self.linked_list.pop()
+        self.assertRaises(IndexError, self.linked_list.pop)
 
-        self.linked_list.push(1)
-        self.linked_list.push(2)
-        self.linked_list.push(3)
+        for _ in range(5):
+            # given
+            to_push = [1, 2, 3]
+            for item in to_push:
+                self.linked_list.push(item)
 
-        self.assertEqual(self.linked_list.pop(), 3)
-        self.assertEqual(len(self.linked_list), 2)
+            expected_pops = [3, 2, 1]
+            expected_lens = [2, 1, 0]
+            expected_head_values = [2, 1]
 
-        self.assertEqual(self.linked_list.pop(), 2)
-        self.assertEqual(len(self.linked_list), 1)
+            for i in range(len(to_push)):
+                # when
+                pop_elem = self.linked_list.pop()
 
-        self.assertEqual(self.linked_list.pop(), 1)
-        self.assertEqual(len(self.linked_list), 0)
+                # then
+                self.assertEqual(pop_elem, expected_pops[i])
+                self.assertEqual(len(self.linked_list), expected_lens[i])
+                if i < len(to_push) - 1:
+                    self.assertEqual(self.linked_list.head.value, expected_head_values[i])
+
+            # then
+            self.assertIsNone(self.linked_list.head)
 
     def test_find(self):
-        self.linked_list.push(10)
-        self.linked_list.push(20)
-        self.linked_list.push(30)
+        # given
+        to_push_back = [1, 2, 3]
+        for item in to_push_back:
+            self.linked_list.push(item)
 
-        self.assertIsNotNone(self.linked_list.find(20))
-        with self.assertRaises(ValueError):
-            self.linked_list.find(40)
-        self.assertEqual(self.linked_list.find(10).value, 10)
+        # when
+        found_node = self.linked_list.find(2)
+
+        # then
+        self.assertIsNotNone(found_node)
+        self.assertEqual(found_node.value, 2)
+        self.assertRaises(ValueError, self.linked_list.find, 200)
 
     def test_remove_after(self):
-        self.linked_list.push(10)
-        self.linked_list.push(20)
-        self.linked_list.push(30)
+        # given
+        to_push_back = [1, 2, 3]
+        for item in to_push_back:
+            self.linked_list.push(item)
 
-        self.assertEqual(self.linked_list.remove_after(30), 20)
-        with self.assertRaises(ValueError):
-            self.linked_list.find(20)
+        # when
+        self.linked_list.remove_after(2)
 
-        self.assertEqual(len(self.linked_list), 2)
-
-        # Тест на удаление после последнего элемента
-        with self.assertRaises(IndexError):
-            self.linked_list.remove_after(10)
-
-        # Тест на удаление после несуществующего элемента
-        with self.assertRaises(ValueError):
-            self.linked_list.remove_after(100)
+        # then
+        self.assertRaises(ValueError, self.linked_list.find, 1)
+        self.assertRaises(IndexError, self.linked_list.remove_after, 2)
+        self.assertRaises(ValueError, self.linked_list.remove_after, 200)
+        self.assertEqual(self.linked_list.head.value, 3)
+        self.assertEqual(self.linked_list.head.next.value, 2)
+        self.assertIsNone(self.linked_list.head.next.next)
 
     def test_print(self):
-        self.linked_list.push(1)
-        self.linked_list.push(2)
-        self.linked_list.push(3)
+        # given
+        to_push_back = [1, 2, 3]
+        for item in to_push_back:
+            self.linked_list.push(item)
 
+        # when
         captured_output = StringIO()
-        sys.stdout = captured_output  # Перехват вывода в stdout
+        sys.stdout = captured_output
         self.linked_list.print()
-        sys.stdout = sys.__stdout__  # Восстановление stdout
+        sys.stdout = sys.__stdout__
 
+        # then
         self.assertEqual(captured_output.getvalue(), "3 2 1 \n")
 
 

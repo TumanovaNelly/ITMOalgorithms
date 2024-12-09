@@ -1,4 +1,6 @@
-from typing import Optional, List, Tuple
+from typing import List, Tuple
+
+from utils import read, write
 
 
 class Heap:
@@ -8,26 +10,41 @@ class Heap:
         self.__heapify()
 
     def __heapify(self):
-        for i in range(len(self.__nodes) - 1, 0, -1):
-            self.__sift_up(i)
+        for i in range(len(self.__nodes) - 1, -1, -1):
+            self.__sift_down(i)
 
-    def __sift_up(self, element_index: int) -> None:
+    def __sift_down(self, element_index: int) -> None:
         while True:
-            parent_index: int = self.__get_parent_index(element_index)
-            if parent_index is None: return
+            left_child_index: int = self.__get_left_child_index(element_index)
+            if left_child_index is None: return
+            right_child_index: int = self.__get_right_child_index(element_index)
 
-            if self.__nodes[element_index] < self.__nodes[parent_index]:
-                self.__nodes[element_index], self.__nodes[parent_index] = \
-                    self.__nodes[parent_index], self.__nodes[element_index]
-                self.permutations_to_heap.append((parent_index, element_index))
-                element_index = parent_index
+            min_child_index = left_child_index \
+                if (right_child_index is None or
+                    self.__nodes[left_child_index] < self.__nodes[right_child_index]) \
+                else right_child_index
+
+            if self.__nodes[min_child_index] < self.__nodes[element_index]:
+                self.__nodes[element_index], self.__nodes[min_child_index] = \
+                    self.__nodes[min_child_index], self.__nodes[element_index]
+                self.permutations_to_heap.append((element_index, min_child_index))
+                element_index = min_child_index
             else:
                 return
 
-    def __get_parent_index(self, element_index: int) -> Optional[int]:
-        return (element_index + 1) // 2 - 1 if element_index > 0 else None
+    def __get_left_child_index(self, element_index: int) -> int:
+        child_index = element_index * 2 + 1
+        return child_index if child_index < len(self.__nodes) else None
+
+    def __get_right_child_index(self, element_index: int) -> int:
+        child_index = element_index * 2 + 2
+        return child_index if child_index < len(self.__nodes) else None
+
+
+def main():
+    data, = read()
+    write(*Heap(data).permutations_to_heap, sep="\n")
 
 
 if __name__ == "__main__":
-    heap = Heap([5, 4, 3, 2, 1])
-    print(*heap.permutations_to_heap, sep="\n")
+    main()

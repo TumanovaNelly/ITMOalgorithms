@@ -1,5 +1,7 @@
 from typing import TypeVar, Optional, List
 
+from utils import read, write
+
 
 class SupportsLT:
     def __lt__(self, other) -> bool: ...
@@ -9,9 +11,10 @@ Comparable = TypeVar('Comparable', bound=SupportsLT)
 
 
 class Heap:
-    def __init__(self, is_reversed: bool = False):
-        self.__nodes: List[Comparable] = []
+    def __init__(self, nodes: List[Comparable], is_reversed: bool = False):
         self.__is_reversed = is_reversed
+        self.__nodes: List[Comparable] = nodes[:]
+        self.__heapify()
 
     def add(self, element: Comparable) -> None:
         self.__nodes.append(element)
@@ -33,7 +36,8 @@ class Heap:
                 self.__nodes[element_index], self.__nodes[parent_index] = \
                     self.__nodes[parent_index], self.__nodes[element_index]
                 element_index = parent_index
-            else: return
+            else:
+                return
 
     def __sift_down(self, element_index: int) -> None:
         while True:
@@ -50,7 +54,12 @@ class Heap:
                 self.__nodes[element_index], self.__nodes[min_child_index] = \
                     self.__nodes[min_child_index], self.__nodes[element_index]
                 element_index = min_child_index
-            else: return
+            else:
+                return
+
+    def __heapify(self):
+        for i in range(len(self.__nodes) - 1, -1, -1):
+            self.__sift_down(i)
 
     def __get_parent_index(self, element_index: int) -> Optional[int]:
         return (element_index + 1) // 2 - 1 if element_index > 0 else None
@@ -64,5 +73,15 @@ class Heap:
         return child_index if child_index < len(self.__nodes) else None
 
 
+def main():
+    data, = read()
+    heap = Heap(data, is_reversed=True)
+
+    sorted_data = []
+    for _ in range(len(data)):
+        sorted_data.append(heap.extract_min())
+    write(*sorted_data)
+
+
 if __name__ == "__main__":
-    heap = Heap(is_reversed=True)
+    main()

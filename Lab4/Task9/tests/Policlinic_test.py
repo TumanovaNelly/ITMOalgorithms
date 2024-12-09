@@ -1,5 +1,6 @@
 import unittest
 from typing import TypeVar
+
 from Lab4.Task9.src.Polyclinic import Queue, main
 from utils import time_data, memory_data
 
@@ -11,85 +12,82 @@ class TestQueue(unittest.TestCase):
     def setUp(self) -> None:
         self.queue = Queue()
 
-
     def test_initial_length(self):
         self.assertEqual(len(self.queue), 0)
 
-
     def test_push_back(self):
-        self.queue.push_back(1)
-        self.assertEqual(len(self.queue), 1)
-        self.assertEqual(self.queue.head.value, 1)
-        self.assertEqual(self.queue.mid.value, 1)
-        self.assertEqual(self.queue.tail.value, 1)
+        # given
+        to_push_back = [1, 2, 3]
+        expected_lens = [1, 2, 3]
+        expected_head_mid_tail_values = [(1, 1, 1), (1, 1, 2), (1, 2, 3)]
 
-        self.queue.push_back(2)
-        self.assertEqual(len(self.queue), 2)
-        self.assertEqual(self.queue.head.value, 1)
-        self.assertEqual(self.queue.mid.value, 1)
-        self.assertEqual(self.queue.tail.value, 2)
+        for index, item in enumerate(to_push_back):
+            # when
+            self.queue.push_back(item)
 
-        self.queue.push_back(3)
-        self.assertEqual(len(self.queue), 3)
-        self.assertEqual(self.queue.head.value, 1)
-        self.assertEqual(self.queue.mid.value, 2)
-        self.assertEqual(self.queue.tail.value, 3)
-
+            # then
+            self.assertEqual(len(self.queue), expected_lens[index])
+            self.assertEqual(self.queue.head.value, expected_head_mid_tail_values[index][0])
+            self.assertEqual(self.queue.mid.value, expected_head_mid_tail_values[index][1])
+            self.assertEqual(self.queue.tail.value, expected_head_mid_tail_values[index][2])
 
     def test_push_mid(self):
-        self.queue.push_back(1)
-        self.queue.push_back(2)
-        self.queue.push_back(4)
-        self.queue.push_back(5)
-        self.queue.push_mid(3)
+        # given
+        to_push_back = [1, 2, 3, 4]
+        for item in to_push_back:
+            self.queue.push_back(item)
 
-        self.assertEqual(len(self.queue), 5)
-        self.assertEqual(self.queue.head.value, 1)
-        self.assertEqual(self.queue.mid.value, 3)
-        self.assertEqual(self.queue.tail.value, 5)
+        to_push_mid = [10, 11, 12]
+        expected_lens = [5, 6, 7]
+        expected_head_mid_tail_values = [(1, 10, 4), (1, 10, 4), (1, 12, 4)]
 
-        self.queue.push_mid(10)
-        self.assertEqual(len(self.queue), 6)
-        self.assertEqual(self.queue.head.value, 1)
-        self.assertEqual(self.queue.mid.value, 3)
-        self.assertEqual(self.queue.mid.next.value, 10)
-        self.assertEqual(self.queue.tail.value, 5)
+        for index, item in enumerate(to_push_mid):
+            # when
+            self.queue.push_mid(item)
 
+            # then
+            self.assertEqual(len(self.queue), expected_lens[index])
+            self.assertEqual(self.queue.head.value, expected_head_mid_tail_values[index][0])
+            self.assertEqual(self.queue.mid.value, expected_head_mid_tail_values[index][1])
+            self.assertEqual(self.queue.tail.value, expected_head_mid_tail_values[index][2])
 
     def test_pop_front(self):
-        self.queue.push_back(1)
-        self.queue.push_back(2)
-        self.queue.push_back(3)
+        self.assertRaises(IndexError, self.queue.pop_front)
 
-        self.assertEqual(self.queue.pop_front(), 1)
-        self.assertEqual(len(self.queue), 2)
-        self.assertEqual(self.queue.head.value, 2)
-        self.assertEqual(self.queue.mid.value, 2)
-        self.assertEqual(self.queue.tail.value, 3)
+        for _ in range(5):
+            # given
+            to_push_back = [1, 2, 3]
+            for item in to_push_back:
+                self.queue.push_back(item)
 
-        self.assertEqual(self.queue.pop_front(), 2)
-        self.assertEqual(len(self.queue), 1)
-        self.assertEqual(self.queue.head.value, 3)
-        self.assertEqual(self.queue.mid.value, 3)
-        self.assertEqual(self.queue.tail.value, 3)
+            expected_pops_front = [1, 2, 3]
+            expected_lens = [2, 1, 0]
+            expected_head_mid_tail_values = [(2, 2, 3), (3, 3, 3)]
 
-        self.assertEqual(self.queue.pop_front(), 3)
-        self.assertEqual(len(self.queue), 0)
-        self.assertIsNone(self.queue.head)
-        self.assertIsNone(self.queue.mid)
-        self.assertIsNone(self.queue.tail)
+            for index, item in enumerate(to_push_back):
+                # when
+                pop_elem = self.queue.pop_front()
 
+                # then
+                self.assertEqual(pop_elem, expected_pops_front[index])
+                self.assertEqual(len(self.queue), expected_lens[index])
+                if index < len(to_push_back) - 1:
+                    self.assertEqual(self.queue.head.value, expected_head_mid_tail_values[index][0])
+                    self.assertEqual(self.queue.mid.value, expected_head_mid_tail_values[index][1])
+                    self.assertEqual(self.queue.tail.value, expected_head_mid_tail_values[index][2])
 
-    def test_pop_from_empty_queue(self):
-        with self.assertRaises(IndexError):
-            self.queue.pop_front()
-
+            # then
+            self.assertIsNone(self.queue.head)
+            self.assertIsNone(self.queue.mid)
+            self.assertIsNone(self.queue.tail)
 
     def test_print_queue(self):
-        self.queue.push_back(1)
-        self.queue.push_back(2)
-        self.queue.push_back(3)
+        # given
+        to_push_back = [1, 2, 3]
+        for item in to_push_back:
+            self.queue.push_back(item)
 
+        # when
         # Захватываем вывод в консоль
         import io
         import sys
@@ -97,19 +95,27 @@ class TestQueue(unittest.TestCase):
         sys.stdout = captured_output
 
         self.queue.print()
-
         # Возвращаем стандартный вывод
         sys.stdout = sys.__stdout__
 
+        # then
         self.assertEqual(captured_output.getvalue(), "1 2 3 \n")
 
     def test_time(self):
-        self.assertTrue(time_data(main) < 2)
+        # when
+        time = time_data(main)
+
+        # then
+        self.assertLess(time, 2)
 
     def test_memory_data(self):
+        # when
         cur, peak = memory_data(main)
-        self.assertTrue(cur < 5)
-        self.assertTrue(peak < 5)
+
+        # then
+        self.assertLess(cur, 2)
+        self.assertLess(peak, 2)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -4,14 +4,20 @@ from utils import time_data, memory_data
 
 
 class TestStack(unittest.TestCase):
-
     def test_time(self):
-        self.assertTrue(time_data(main) < 2)
+        # when
+        time = time_data(main)
+
+        # then
+        self.assertLess(time, 2)
 
     def test_memory_data(self):
+        # when
         cur, peak = memory_data(main)
-        self.assertTrue(cur < 5)
-        self.assertTrue(peak < 5)
+
+        # then
+        self.assertLess(cur, 5)
+        self.assertLess(peak, 5)
 
 
 if __name__ == "__main__":

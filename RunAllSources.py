@@ -11,4 +11,4 @@ if __name__ == '__main__':
             run_path = 'RunLabSources.py'
             print(f'{CYAN}======= RUNNING {lab_directory} SOURCES ======={RESET}')
             subprocess.run(['python', run_path], cwd=lab_directory)
-            print('\n\n\n\n')
+            print()
