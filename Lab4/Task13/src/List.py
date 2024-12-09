@@ -50,6 +50,7 @@ class List:
         pop_node = self.tail
         self.tail = self.tail.prev
         self.__length -= 1
+        if self.__length == 0: self.head = None
         return pop_node.value
 
     def pop_front(self) -> T:
@@ -59,6 +60,7 @@ class List:
         pop_node = self.head
         self.head = self.head.next
         self.__length -= 1
+        if self.__length == 0: self.tail = None
         return pop_node.value
 
     def find(self, value: T) -> Node:
@@ -99,3 +101,5 @@ class List:
             print(current_node.value, end=sep)
             current_node = current_node.next
         print()
+
+

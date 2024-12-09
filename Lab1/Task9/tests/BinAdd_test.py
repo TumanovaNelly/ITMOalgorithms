@@ -1,44 +1,88 @@
-import pytest
+import unittest
 
 from Lab1.Task9.src.BinAdd import bin_add, main
 from utils import time_data, memory_data
 
 
-def test_bin_add_same_length():
-    assert bin_add([1, 0, 1], [1, 1, 0]) == [1, 0, 1, 1]
+class TestBinAdd(unittest.TestCase):
+    def test_bin_add_same_length(self):
+        # given
+        first, second = [1, 0, 1], [1, 1, 0]
+        first_plus_second = [1, 0, 1, 1]
+
+        # when
+        bin_add_result = bin_add(first, second)
+
+        # then
+        self.assertEqual(bin_add_result, first_plus_second)
+
+    def test_bin_add_different_length(self):
+        # given
+        first, second = [1, 0], [1, 1, 1]
+        first_plus_second = [1, 0, 0, 1]
+
+        # when
+        bin_add_result = bin_add(first, second)
+
+        # then
+        self.assertEqual(bin_add_result, first_plus_second)
+
+    def test_bin_add_all_zeros(self):
+        # given
+        first, second = [0, 0, 0], [0, 0, 0]
+        first_plus_second = [0, 0, 0, 0]
+
+        # when
+        bin_add_result = bin_add(first, second)
+
+        # then
+        self.assertEqual(bin_add_result, first_plus_second)
+
+    def test_bin_add_one_bit(self):
+        # given
+        first, second = [1], [1]
+        first_plus_second = [1, 0]
+
+        # when
+        bin_add_result = bin_add(first, second)
+
+        # then
+        self.assertEqual(bin_add_result, first_plus_second)
+
+    def test_bin_add_large_numbers(self):
+        # given
+        first, second = [1, 1, 1, 1, 1], [1, 1, 1, 1, 1]
+        first_plus_second = [1, 1, 1, 1, 1, 0]
+
+        # when
+        bin_add_result = bin_add(first, second)
+
+        # then
+        self.assertEqual(bin_add_result, first_plus_second)
+
+    def test_bin_add_invalid_input(self):
+        # (then, when, *given)
+        self.assertRaises(ValueError, bin_add, [1, 0, 2], [0, 1, 0])
+
+    def test_bin_add_invalid_input_non_binary(self):
+        # (then, when, *given)
+        self.assertRaises(ValueError, bin_add, [1, 0, 1], [1, 0, 5])
+
+    def test_time(self):
+        # when
+        time = time_data(main)
+
+        # then
+        self.assertLess(time, 2)
+
+    def test_memory_data(self):
+        # when
+        cur, peak = memory_data(main)
+
+        # then
+        self.assertLess(cur, 2)
+        self.assertLess(peak, 2)
 
 
-def test_bin_add_different_length():
-    assert bin_add([1, 0], [1, 1, 1]) == [1, 0, 0, 1]
-
-
-def test_bin_add_all_zeros():
-    assert bin_add([0, 0, 0], [0, 0, 0]) == [0, 0, 0, 0]
-
-
-def test_bin_add_one_bit():
-    assert bin_add([1], [1]) == [1, 0]
-
-
-def test_bin_add_large_numbers():
-    assert bin_add([1, 1, 1, 1, 1], [1, 1, 1, 1, 1]) == [1, 1, 1, 1, 1, 0]
-
-
-def test_bin_add_invalid_input():
-    with pytest.raises(ValueError):
-        bin_add([1, 0, 2], [0, 1, 0])
-
-
-def test_bin_add_invalid_input_non_binary():
-    with pytest.raises(ValueError):
-        bin_add([1, 0, 1], [1, 0, 5])
-
-
-def test_time():
-    assert time_data(main) < 2
-
-
-def test_memory_data():
-    cur, peak = memory_data(main)
-    assert cur < 1
-    assert peak < 1
+if __name__ == '__main__':
+    unittest.main()

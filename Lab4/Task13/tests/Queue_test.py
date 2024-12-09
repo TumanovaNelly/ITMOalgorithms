@@ -36,6 +36,13 @@ class TestStack(unittest.TestCase):
         self.queue.pop()
         self.assertTrue(self.queue.is_empty())
 
+    def test_push_pop_push_pop(self):
+        self.queue.push(1)
+        self.assertEqual(self.queue.pop(), 1)
+        self.queue.push(2)
+        self.assertEqual(self.queue.pop(), 2)
+        self.queue.push(3)
+        self.assertEqual(self.queue.pop(), 3)
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,24 +1,23 @@
 import unittest
 from random import randint
 
-from Lab2.Task4.src.BinPow import bin_pow, main
+from Lab2.Task8.src.MultPolynomials import mult_polynomials, mult_polynomials_naive, main
 from utils import time_data, memory_data
 
 
-class TestBinPow(unittest.TestCase):
-    def test_bin_pow(self):
-        for _ in range(1000):
+class TestMultPolynomials(unittest.TestCase):
+    def test_mult_polynomials_random(self):
+        for _ in range(100):
             # given
-            lst = [randint(-100, 100) for _ in range(1000)]
-            lst.sort()
-            value = randint(-100, 100)
+            f = [randint(-100, 100) for _ in range(100)]
+            g = [randint(-100, 100) for _ in range(100)]
+            expected_result = mult_polynomials_naive(f, g)
 
             # when
-            index = bin_pow(lst, value)
+            result = mult_polynomials(f, g)
 
             # then
-            if index == -1: self.assertNotIn(value, lst)
-            else: self.assertEqual(lst[index], value)
+            self.assertEqual(result, expected_result)
 
     def test_time(self):
         # when

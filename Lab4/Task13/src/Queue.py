@@ -8,6 +8,9 @@ class Queue:
     def __init__(self):
         self.queue = List()
 
+    def __len__(self) -> int:
+        return len(self.queue)
+
     def is_empty(self) -> bool:
         return len(self.queue) == 0
 
@@ -16,3 +19,4 @@ class Queue:
 
     def pop(self) -> T:
         return self.queue.pop_front()
+
