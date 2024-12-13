@@ -16,10 +16,7 @@ def check_heap(candidate: list) -> bool:
 
 def main():
     data, = read()
-    if check_heap(data):
-        write("YES")
-    else:
-        write("NO")
+    write("YES" if check_heap(data) else "NO")
 
 
 if __name__ == "__main__":
