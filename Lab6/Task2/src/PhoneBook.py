@@ -1,4 +1,3 @@
-from optparse import Values
 from typing import Callable, TypeVar, List, Tuple
 
 from utils import read, write
@@ -63,9 +62,7 @@ class CustomDict:
                 yield key
 
 
-
-
-if __name__ == "__main__":
+def main():
     custom_dict = CustomDict()
 
     write(end="")
@@ -75,7 +72,13 @@ if __name__ == "__main__":
         elif command == "del":
             try:
                 del custom_dict[values[0]]
-            except KeyError: pass
+            except KeyError:
+                pass
         elif command == "find":
             write(custom_dict.get(values[0], "not found"), to_end=True)
-        else: raise ValueError(f"Unknown command: {command}")
+        else:
+            raise ValueError(f"Unknown command: {command}")
+
+
+if __name__ == "__main__":
+    main()

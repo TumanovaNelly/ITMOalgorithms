@@ -15,6 +15,7 @@ class TestList(unittest.TestCase):
         self.assertIsNone(self.linked_list.tail)
 
     def test_push_back(self):
+        # given
         to_push_back = [1, 2, 3, 4, 5]
         expected_lens = [1, 2, 3, 4, 5]
         expected_head_tail_values = [(1, 1), (1, 2), (1, 3), (1, 4), (1, 5)]
@@ -28,6 +29,7 @@ class TestList(unittest.TestCase):
             self.assertEqual(self.linked_list.tail.value, expected_head_tail_values[index][1])
 
     def test_push_front(self):
+        # given
         to_push_front = [1, 2, 3, 4, 5]
         expected_lens = [1, 2, 3, 4, 5]
         expected_head_tail_values = [(1, 1), (2, 1), (3, 1), (4, 1), (5, 1)]
