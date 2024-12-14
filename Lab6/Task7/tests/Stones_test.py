@@ -23,7 +23,7 @@ class TestStones(unittest.TestCase):
         time = time_data(main)
 
         # then
-        self.assertLess(time, 2)
+        self.assertLess(time, 1)
 
     def test_memory_data(self):
         # when

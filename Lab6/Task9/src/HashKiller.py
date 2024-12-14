@@ -58,10 +58,14 @@ def find_power_of_two(number: int):
 
 
 def generate_strings(number: int):
+    if number == 1:
+        yield 'A'
+        return
     cnt = 0
     even_killer = generate_even_killer()
     for model in product([*generate_odd_killers()], repeat=find_power_of_two(number)):
         if cnt >= number: break
+        cnt += 1
         yield "".join(model) + even_killer
 
 
@@ -70,21 +74,5 @@ def main():
     write(*generate_strings(number), sep="\n")
 
 
-def check():
-    strings = read(filename="../txtf/output.txt", type_convert=str)
-    for mult in range(2, 1024):
-        hsh = None
-        for string, in strings:
-            if len(string) > 2500: return False
-
-            if hsh is not None:
-                if hsh != get_hash(string, mult):
-                    return False
-            else:
-                hsh = get_hash(string, mult)
-    return True
-
-
 if __name__ == '__main__':
     main()
-    # print(check())
