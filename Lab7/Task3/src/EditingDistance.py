@@ -5,8 +5,11 @@ def editing_distance(word1: str, word2: str):
     word1 = " " + word1
     word2 = " " + word2
     distance_data = [[0] * len(word1) for _ in range(len(word2))]
-    for i in range(len(word1)):
-        distance_data[0][i] = distance_data[i][0] = i
+
+    for column in range(len(word1)):
+        distance_data[0][column] = column
+    for line in range(len(word2)):
+        distance_data[line][0] = line
 
     for line in range(1, len(word2)):
         for column in range(1, len(word1)):
@@ -23,18 +26,25 @@ def editing_distance(word1: str, word2: str):
     while line >= 0 and column >= 0:
         if word1[column] != word2[line]:
             if distance_data[line][column - 1] == distance_data[line][column] - 1:
-                actions.append(f"del {word1[column]}")
+                actions.append(f"del {word1[column]} (in {column - 1} symbol)")
                 line += 1
             elif distance_data[line - 1][column - 1] == distance_data[line][column] - 1:
-                actions.append(f"change {word1[column]} {word2[line]}")
+                actions.append(f"change {word1[column]} {word2[line]} (in {column - 1} symbol)")
             elif distance_data[line - 1][column] == distance_data[line][column] - 1:
-                actions.append(f"add {word2[line]}")
+                actions.append(f"add {word2[line]} (before {column} symbol)")
                 column += 1
         line -= 1
         column -= 1
+
+    while column >= 0:
+        actions.append(f"del {word1[column]} (in {column - 1} symbol)")
+        column -= 1
+
+    while line >= 0:
+        actions.append(f"add {word2[line]} (before {column} symbol)")
+        line -= 1
+
     return reversed(actions)
-
-
 
 
 def editing_distance_memory_optimized(word1: str, word2: str) -> int:
@@ -48,15 +58,15 @@ def editing_distance_memory_optimized(word1: str, word2: str) -> int:
                 new_line_distance_data[column] = old_line_distance_data[column - 1]
             else:
                 new_line_distance_data[column] = 1 + min(new_line_distance_data[column - 1],
-                                                          old_line_distance_data[column],
-                                                          old_line_distance_data[column - 1])
+                                                         old_line_distance_data[column],
+                                                         old_line_distance_data[column - 1])
         old_line_distance_data, new_line_distance_data = new_line_distance_data, old_line_distance_data
 
     return old_line_distance_data[-1]
 
 
 def main():
-    (word1, ), (word2, ) = read(type_convert=str)
+    (word1,), (word2,) = read(type_convert=str)
     write(editing_distance_memory_optimized(word1, word2))
     print(*editing_distance(word1, word2), sep='\n')
 

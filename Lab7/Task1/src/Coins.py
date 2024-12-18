@@ -30,7 +30,7 @@ def count_coins_with_borders_optimized(price: int, coins: Dict[int, int]):
             for x in range(price, coin * count - 1, -1):
                 count_list[x] = min(count_list[x], count_list[x - coin * count] + count)
 
-    return count_list[price] if count_list[price] != float('inf') else -1
+    return count_list[price] if count_list[price] != float('inf') else None
 
 
 def main():
